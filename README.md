@@ -19,17 +19,18 @@ See `docs/MASTER_SPECIFICATION.md`.
 
 ## Current status
 
-The repository was initialized from an empty baseline on 2026-07-24. This first review stage:
+The repository was initialized from an empty baseline on 2026-07-24. The current draft review stage:
 
-- freezes the available repository, prototype, proposal, bibliography, and Elicit-input baselines;
-- assigns stable IDs to PCC components, claims, sources, novelty propositions, searches, and decisions;
-- records immutable checksums for all Elicit outputs, imports the raw BibTeX snapshot, and commits normalized CSV derivatives;
+- freezes the available repository, prototype, proposal, bibliography-fragment, and Elicit-input baselines;
+- assigns stable IDs to PCC components, claims, sources, novelty propositions, searches, decisions, and imports;
+- records immutable checksums, preserves raw text inputs, and commits normalized register data;
 - creates linked evidence and provenance registers;
 - adds validation and novelty-language guards;
 - defines the LaTeX traceability-comment convention;
-- establishes the Zotero -> Better BibTeX -> Overleaf workflow.
+- establishes the Zotero -> Better BibTeX -> Overleaf workflow; and
+- audits the proposal's current manual bibliography and candidate `.bib` fragments without merging them silently.
 
-The current Overleaf/LaTeX source and authoritative Zotero export were not present in the workspace, so proposal traceability insertion and bibliography replacement remain pending rather than being reconstructed from incomplete artifacts.
+The Overleaf/RPI source is checksum-frozen and represented by a repository-safe file inventory. The unmodified archive is not redistributed because its front matter contains a personal committee identifier. Overleaf remains authoritative for source files, figures, and the compiled PDF. The complete authoritative Zotero Better BibTeX export remains pending; `bibliography/references.bib` is therefore still a controlled placeholder.
 
 ## Repository map
 
@@ -51,9 +52,11 @@ imports/
   normalized/
 bibliography/
   references.bib
+  IMPORT_STATUS.md
 docs/
   MASTER_SPECIFICATION.md
   BASELINE_2026-07-24.md
+  PROTOTYPE_REFERENCE.md
   REGISTER_GUIDE.md
 proposal/
   TRACEABILITY_CONVENTION.md
@@ -102,4 +105,4 @@ GitHub Actions runs the same checks on every pull request.
 
 ## Working rule
 
-Raw inputs are append-only. Never overwrite a raw import. Add a dated snapshot, record its hash in `imports/manifest.csv`, and create or update normalized records in a separate commit.
+Raw inputs are append-only. Never overwrite a raw import. Add a dated snapshot, record its hash in `imports/manifest.csv`, and create or update normalized records in a separate commit. Personal committee identifiers are not stored in repository content; role-based provenance and logged repository-safe derivatives are used instead.
