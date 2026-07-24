@@ -1,0 +1,9 @@
+component_id,name,definition,status,decision_id
+PCC-C01,Coordination-critical variable identification,Identify task variables whose plausible interpretations can materially alter downstream work.,active,DEC-0007
+PCC-C02,Actor-indexed first-order apparent state,Represent each actor's apparent task interpretation or commitment without claiming access to private mental states.,active,DEC-0004
+PCC-C03,Recursive or second-order Theory of Mind state,Represent bounded hypotheses about what one actor appears to take another actor to understand or commit to.,active,DEC-0004
+PCC-C04,Observable public evidence and grounding status,"Inventory public utterances, acknowledgements, artifacts, policies, and actions relevant to whether an interpretation is publicly established.",active,DEC-0005
+PCC-C05,Public warrant and promotion control,Assess whether available public evidence is sufficient to promote an interpretation into action-guiding coordination commitment.,active,DEC-0006
+PCC-C06,Action sensitivity and counterfactual consequence,"Compare plausible interpretations by their materially different downstream plans, permissions, schedules, resources, responsibilities, or artifacts.",active,DEC-0007
+PCC-C07,"Incomplete-context handling, uncertainty, and abstention","Expose missing context and uncertainty, and abstain when the evidence is insufficient for a defensible diagnostic.",active,DEC-0009
+PCC-C08,"Evidence-backed observability, contestability, and diagnostic evaluation","Expose the evidence, competing interpretations, warrant basis, proposed transition, and consequences so a human can inspect and challenge the diagnostic.",active,DEC-0009

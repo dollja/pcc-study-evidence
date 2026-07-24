@@ -23,7 +23,7 @@ The repository was initialized from an empty baseline on 2026-07-24. This first 
 
 - freezes the available repository, prototype, proposal, bibliography, and Elicit-input baselines;
 - assigns stable IDs to PCC components, claims, sources, novelty propositions, searches, and decisions;
-- records immutable checksums for all Elicit outputs, imports the raw BibTeX snapshot, and commits normalized register data;
+- records immutable checksums for all Elicit outputs, imports the raw BibTeX snapshot, and commits normalized CSV derivatives;
 - creates linked evidence and provenance registers;
 - adds validation and novelty-language guards;
 - defines the LaTeX traceability-comment convention;
