@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+proposal/upstream/
+imports/staging/
+bibliography/*.sqlite
+bibliography/*.bak
+generated/*
+!generated/README.md

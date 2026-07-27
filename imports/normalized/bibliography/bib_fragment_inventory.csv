@@ -1,0 +1,4 @@
+fragment_id,path,sha256,entry_count,key_style,authority_status,notes
+capability_matrix,imports/raw/bibliography/2026-07-24/elicit_capability_matrix.bib,c187a0fc2033df3f7185f9c0fd3cc92fa0fc393cdfed7c255c3bc2fb522adb4b,10,opaque_elicit_id,candidate_zotero_fragment,Elicit-derived fragment with opaque keys; import to Zotero and re-export before authoritative use.
+proposal_sample,imports/raw/bibliography/2026-07-24/proposal_sample.bib,acdd740240ae16d7d5bf1b0d3791b82013041aae678c9a8d81fdb647452a5890,8,human_readable_or_mixed,candidate_zotero_fragment,Exact duplicate of sample.bib embedded in the proposal source export; covers only a subset of current proposal citation keys.
+starter_corpus,imports/raw/elicit/2026-07-24/starter_literature_corpus.bib,e6a73adc0977c30b1c03b2224ec97d19bf53c8d395fec03f70cf01b00bd0a2c6,35,opaque_elicit_id,provisional_elicit,Previously imported provisional Elicit literature corpus; not authoritative metadata.

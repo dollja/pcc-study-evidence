@@ -1,0 +1,6 @@
+relation_id,left_fragment,left_key,right_fragment,right_key,match_type,normalized_doi,normalized_title,disposition
+DUP-0001,proposal_source_export,embedded:sample.bib,proposal_sample,file,exact_file_sha256,,,store one standalone fragment; retain embedded copy only inside the frozen proposal export
+DUP-0002,capability_matrix,18c51f5273ab990859988befdc3f88e2,starter_corpus,18c4d349d6ae446aab4190800e7f6e41,title,,dynamics of public commitments in dialogue,deduplicate in Zotero by DOI/title; preserve raw fragment records
+DUP-0003,capability_matrix,18c51f4dff4bdb725db1cb952b2a49f4,starter_corpus,18c4d34636c0a784a083109be9d894df,doi_and_title,10.48550/arxiv.2403.17284,common ground tracking in multimodal dialogue,deduplicate in Zotero by DOI/title; preserve raw fragment records
+DUP-0004,capability_matrix,18c51f4dfd9c4a870dda5066e6be7cdd,starter_corpus,18c4d349db216cdef610291ff0665618,title,,safeguarding llm agents from misalignment through provenance analysis,deduplicate in Zotero by DOI/title; preserve raw fragment records
+DUP-0005,proposal_sample,ClarkBrennan1991,starter_corpus,18c4d349d46555170786f8f30c98af0b,title,10.1037/10096-006,grounding in communication,deduplicate in Zotero by DOI/title; preserve raw fragment records
