@@ -53,7 +53,7 @@ class PrototypeEvidenceValidationTests(unittest.TestCase):
         errors = self.errors()
         self.assertTrue(any(text in error for error in errors), "\n".join(errors))
 
-    def test_real_repository_validates_with_header_only_registers(self):
+    def test_real_repository_validates(self):
         errors, _ = validate_all()
         self.assertEqual([], errors, "\n".join(errors))
 
@@ -65,7 +65,6 @@ class PrototypeEvidenceValidationTests(unittest.TestCase):
             "proposal/section_claim_map.csv",
         ):
             self.assertIn(path, counts)
-            self.assertEqual(0, counts[path])
 
     def test_invalid_pev_id_is_rejected(self):
         self.add_pev(prototype_evidence_id="PEV-99")
