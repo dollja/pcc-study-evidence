@@ -20,6 +20,11 @@ prototype implementation.
 - Do not convert an Elicit extraction into a full-text-verified finding.
 - Separate scholarly evidence, author decisions, and prototype evidence.
 - Preserve superseded and retired records rather than deleting them.
+- Never duplicate prototype code in this repository.
+- Never mark PEV evidence `reproduced` or `verified` without an exact command,
+  result, limitation, and immutable commit.
+- Never treat PEV evidence as novelty proof.
+- Never include personal committee identifiers.
 
 ## Validation
 
