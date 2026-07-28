@@ -10,7 +10,10 @@
     "claim_source_link_id": "^CE-[0-9]{4}$",
     "claim_decision_link_id": "^CD-[0-9]{4}$",
     "component_provenance_id": "^CP-[0-9]{4}$",
-    "novelty_source_link_id": "^NS-[0-9]{4}$"
+    "novelty_source_link_id": "^NS-[0-9]{4}$",
+    "prototype_evidence_id": "^PEV-[0-9]{4}$",
+    "claim_prototype_link_id": "^CPE-[0-9]{4}$",
+    "section_claim_map_id": "^SCM-[0-9]{4}$"
   },
   "registers": {
     "data/components.csv": {
@@ -175,6 +178,56 @@
         "duplicate_of",
         "import_status",
         "authority_role",
+        "notes"
+      ]
+    },
+    "data/prototype_evidence.csv": {
+      "id_column": "prototype_evidence_id",
+      "id_pattern": "prototype_evidence_id",
+      "required_columns": [
+        "prototype_evidence_id",
+        "revision_batch",
+        "prototype_repository",
+        "commit_sha",
+        "evidence_type",
+        "scenario_id",
+        "context_condition",
+        "code_path",
+        "symbol_or_test",
+        "execution_command",
+        "output_artifact",
+        "observed_result",
+        "verification_status",
+        "limitations",
+        "verified_date"
+      ]
+    },
+    "data/claim_prototype_links.csv": {
+      "id_column": "link_id",
+      "id_pattern": "claim_prototype_link_id",
+      "required_columns": [
+        "link_id",
+        "claim_id",
+        "prototype_evidence_id",
+        "relation",
+        "wording_ceiling",
+        "notes"
+      ]
+    },
+    "proposal/section_claim_map.csv": {
+      "id_column": "map_id",
+      "id_pattern": "section_claim_map_id",
+      "required_columns": [
+        "map_id",
+        "revision_batch",
+        "proposal_repository",
+        "proposal_commit_sha",
+        "proposal_path",
+        "section_anchor",
+        "claim_id",
+        "claim_role",
+        "traceability_status",
+        "last_reviewed",
         "notes"
       ]
     }

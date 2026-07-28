@@ -41,6 +41,8 @@ data/
   sources.csv
   claim_source_links.csv
   claim_decision_links.csv
+  prototype_evidence.csv
+  claim_prototype_links.csv
   component_provenance.csv
   novelty_propositions.csv
   novelty_source_links.csv
@@ -57,9 +59,11 @@ docs/
   MASTER_SPECIFICATION.md
   BASELINE_2026-07-24.md
   PROTOTYPE_REFERENCE.md
+  PROTOTYPE_EVIDENCE_GUIDE.md
   REGISTER_GUIDE.md
 proposal/
   TRACEABILITY_CONVENTION.md
+  section_claim_map.csv
 schema/
   registers.json
 scripts/
@@ -78,6 +82,9 @@ IDs are immutable and never reused:
 - `SEA-####` - searches
 - `DEC-####` - decisions
 - `IMP-####` - imports
+- `PEV-####` - prototype evidence
+- `CPE-####` - claim–prototype links
+- `SCM-####` - proposal section–claim mappings
 
 Changes to wording do not change the ID. Superseded records remain in the register with an explicit status and pointer.
 
@@ -102,6 +109,15 @@ python -m unittest discover -s tests -v
 ```
 
 GitHub Actions runs the same checks on every pull request.
+
+## Prototype evidence
+
+The prototype repository is referenced at an immutable commit; its source code is
+not copied into this evidence repository. PEV records are populated only after a
+reproducible prototype run can be tied to an exact command, observed result,
+limitations, and full commit SHA. Implementation remains distinct from
+demonstration, and prototype evidence neither establishes scholarly claims nor
+proves novelty. See `docs/PROTOTYPE_EVIDENCE_GUIDE.md`.
 
 ## Working rule
 
