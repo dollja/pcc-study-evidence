@@ -58,7 +58,10 @@ class Rev002EvidenceArchiveTests(unittest.TestCase):
         self.assertEqual(len(names), 65)
         self.assertEqual(len(files), 47)
         self.assertIn("evidence/runs/REV-002/README.md", files)
-        self.assertTrue(all(name.startswith("evidence/runs/REV-002/") for name in names))
+        self.assertTrue(all(name.startswith("evidence/runs/REV-002/") for name in files))
+        self.assertIn("evidence/", names)
+        self.assertIn("evidence/runs/", names)
+        self.assertIn("evidence/runs/REV-002/", names)
 
     def test_archive_contains_evidence_artifacts_not_prototype_source(self) -> None:
         with zipfile.ZipFile(io.BytesIO(self.archive_bytes)) as archive:
