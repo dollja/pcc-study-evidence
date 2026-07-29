@@ -8,3 +8,5 @@ bibliography/*.sqlite
 bibliography/*.bak
 generated/*
 !generated/README.md
+!generated/REV-002/
+!generated/REV-002/*.md

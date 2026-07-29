@@ -69,7 +69,22 @@ schema/
 scripts/
   validate_registers.py
 tests/
+workflow/
+  batches/
+  handoffs/
 ```
+
+## Cross-repository revision batches
+
+`workflow/batches/REV-###.json` is the canonical cross-repository revision
+control record. Generated launchers are derived artifacts: the batch manifest,
+not conversation history or a generated prompt, is authoritative for commit
+SHAs and stage state. A future merge SHA may be recorded only after the
+corresponding pull request has been reviewed and merged.
+
+The commit `3f27be060438a4d01433ac12bcf037b4767431e0` is retained as a
+remediation baseline and audit trail. It is not canonical reproduced PEV
+evidence and must not be used as novelty proof.
 
 ## Stable-ID policy
 

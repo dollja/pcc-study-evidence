@@ -1,0 +1,24 @@
+{
+  "batch_id": "REV-002",
+  "status": "preflight",
+  "remediation_baseline": "3f27be060438a4d01433ac12bcf037b4767431e0",
+  "repositories": {
+    "evidence": {
+      "baseline_sha": "892628ce9c524d25167117dc2523189a316470fa",
+      "merge_sha": null
+    },
+    "prototype": {
+      "baseline_sha": "3f27be060438a4d01433ac12bcf037b4767431e0",
+      "merge_sha": null
+    },
+    "proposal": {
+      "baseline_sha": null,
+      "merge_sha": null
+    }
+  },
+  "stages": {
+    "prompt_c": {"title": "Prompt C launcher", "state": "blocked_on_reviewed_merge"},
+    "prompt_d": {"title": "Prompt D launcher", "state": "blocked_on_prompt_c"},
+    "closure": {"title": "Closure launcher", "state": "blocked_on_prompt_d"}
+  }
+}
