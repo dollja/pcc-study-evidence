@@ -1,24 +1,33 @@
 {
   "batch_id": "REV-002",
-  "status": "preflight",
+  "status": "prompt_c_in_progress",
   "remediation_baseline": "3f27be060438a4d01433ac12bcf037b4767431e0",
   "repositories": {
     "evidence": {
-      "baseline_sha": "892628ce9c524d25167117dc2523189a316470fa",
+      "baseline_sha": "785f6e90160c34eb2b74b3ccfa2c5449801b17f4",
       "merge_sha": null
     },
     "prototype": {
       "baseline_sha": "3f27be060438a4d01433ac12bcf037b4767431e0",
-      "merge_sha": null
+      "merge_sha": "c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4"
     },
     "proposal": {
-      "baseline_sha": null,
+      "baseline_sha": "2596859c0e22bda81a7c0ff750dd632423b87b17",
       "merge_sha": null
     }
   },
   "stages": {
-    "prompt_c": {"title": "Prompt C launcher", "state": "blocked_on_reviewed_merge"},
-    "prompt_d": {"title": "Prompt D launcher", "state": "blocked_on_prompt_c"},
-    "closure": {"title": "Closure launcher", "state": "blocked_on_prompt_d"}
+    "prompt_c": {
+      "title": "Prompt C launcher",
+      "state": "in_progress_guarded_partial_registration"
+    },
+    "prompt_d": {
+      "title": "Prompt D launcher",
+      "state": "blocked_on_prompt_c_merge"
+    },
+    "closure": {
+      "title": "Closure launcher",
+      "state": "blocked_on_prompt_d_merge"
+    }
   }
 }
