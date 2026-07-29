@@ -1,0 +1,15 @@
+{
+  "batch_id": "REV-000",
+  "status": "planned",
+  "remediation_baseline": "0000000000000000000000000000000000000000",
+  "repositories": {
+    "evidence": {"baseline_sha": null, "merge_sha": null},
+    "prototype": {"baseline_sha": null, "merge_sha": null},
+    "proposal": {"baseline_sha": null, "merge_sha": null}
+  },
+  "stages": {
+    "prompt_c": {"title": "Prompt C launcher", "state": "not_started"},
+    "prompt_d": {"title": "Prompt D launcher", "state": "not_started"},
+    "closure": {"title": "Closure launcher", "state": "not_started"}
+  }
+}
