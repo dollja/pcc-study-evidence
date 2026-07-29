@@ -6,7 +6,16 @@ NAME="REV-002-evidence-c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4.zip"
 OUT_ZIP="${1:-/tmp/${NAME}}"
 OUT_DIR="${2:-/tmp/REV-002-evidence-c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4}"
 
-cat "${HERE}/${NAME}.b64.part-"* | base64 --decode > "${OUT_ZIP}"
+cat \
+  "${HERE}/${NAME}.b64.v2.part-00" \
+  "${HERE}/${NAME}.b64.v2.part-01" \
+  "${HERE}/${NAME}.b64.v2.part-02" \
+  "${HERE}/${NAME}.b64.v2.part-03" \
+  "${HERE}/${NAME}.b64.v2.part-04" \
+  "${HERE}/${NAME}.b64.v2.part-05" \
+  "${HERE}/${NAME}.b64.v2.part-06" \
+  "${HERE}/${NAME}.b64.v2.part-07" \
+  | base64 --decode > "${OUT_ZIP}"
 
 EXPECTED="$(awk '{print tolower($1)}' "${HERE}/${NAME}.sha256")"
 ACTUAL="$(sha256sum "${OUT_ZIP}" | awk '{print $1}')"
@@ -19,9 +28,8 @@ if [[ "${ACTUAL}" != "${EXPECTED}" ]]; then
 fi
 
 unzip -t "${OUT_ZIP}" >/dev/null
-rm -rf "${OUT_DIR}"
 mkdir -p "${OUT_DIR}"
-unzip -q "${OUT_ZIP}" -d "${OUT_DIR}"
+unzip -qo "${OUT_ZIP}" -d "${OUT_DIR}"
 
 printf 'Verified ZIP: %s\n' "${OUT_ZIP}"
 printf 'SHA-256: %s\n' "${ACTUAL}"
