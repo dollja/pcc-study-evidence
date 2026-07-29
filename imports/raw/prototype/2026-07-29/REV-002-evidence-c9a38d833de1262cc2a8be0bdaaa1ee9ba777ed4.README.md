@@ -1,6 +1,6 @@
 # REV-002 prototype-evidence archive
 
-This directory contains an immutable, multipart base64 representation of:
+This directory contains an immutable multipart base64 representation of:
 
 ```text
 REV-002-evidence-c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4.zip
@@ -21,6 +21,18 @@ The archive was supplied for the guarded REV-002 prototype-evidence finalization
 
 No prototype source code is copied into this evidence repository.
 
+## Multipart versions
+
+The canonical copy is:
+
+```text
+REV-002-evidence-...zip.b64.v2.part-00
+...
+REV-002-evidence-...zip.b64.v2.part-07
+```
+
+The original unversioned `b64.part-*` files are retained as a superseded import-attempt audit trail. They failed strict base64 validation and must not be used for reconstruction. They are not a second canonical import.
+
 ## Reconstruct and verify in Codex
 
 From the evidence-repository root, run:
@@ -31,7 +43,7 @@ bash imports/raw/prototype/2026-07-29/restore_rev002_evidence_archive.sh
 
 The script:
 
-1. concatenates parts `00` through `07` in lexical order;
+1. concatenates the canonical `v2` parts `00` through `07` in lexical order;
 2. base64-decodes the exact ZIP to `/tmp`;
 3. verifies the supplied SHA-256;
 4. tests the ZIP structure;
