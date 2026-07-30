@@ -3,11 +3,11 @@
 > Derived launcher. The batch manifest—not conversation history or this prompt—is
 > authoritative for SHAs and stage state.
 
-Stage state: `in_progress_guarded_partial_registration`
+Stage state: `completed_with_postmerge_correction`
 
 ## Recorded repository revisions
 
-- `evidence` merge SHA: `UNRESOLVED—record only after the corresponding PR is reviewed and merged`
+- `evidence` merge SHA: `39e8df1f5a6d414fc492ef1abc973b45604d50f2`
 - `prototype` merge SHA: `c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4`
 - `proposal` merge SHA: `UNRESOLVED—record only after the corresponding PR is reviewed and merged`
 
