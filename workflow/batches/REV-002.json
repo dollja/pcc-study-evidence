@@ -1,11 +1,14 @@
 {
   "batch_id": "REV-002",
-  "status": "prompt_c_in_progress",
+  "status": "prompt_d_ready_after_postmerge_correction",
   "remediation_baseline": "3f27be060438a4d01433ac12bcf037b4767431e0",
   "repositories": {
     "evidence": {
       "baseline_sha": "785f6e90160c34eb2b74b3ccfa2c5449801b17f4",
-      "merge_sha": null
+      "merge_sha": "39e8df1f5a6d414fc492ef1abc973b45604d50f2",
+      "prompt_c_pr": 8,
+      "prompt_c_pr_head_sha": "8c9b59f7e2e0f9f6d1099614fba7bb3f47ace613",
+      "prompt_c_merge_sha": "39e8df1f5a6d414fc492ef1abc973b45604d50f2"
     },
     "prototype": {
       "baseline_sha": "3f27be060438a4d01433ac12bcf037b4767431e0",
@@ -19,11 +22,11 @@
   "stages": {
     "prompt_c": {
       "title": "Prompt C launcher",
-      "state": "in_progress_guarded_partial_registration"
+      "state": "completed_with_postmerge_correction"
     },
     "prompt_d": {
       "title": "Prompt D launcher",
-      "state": "blocked_on_prompt_c_merge"
+      "state": "ready"
     },
     "closure": {
       "title": "Closure launcher",
