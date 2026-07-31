@@ -1,5 +1,12 @@
 # PCC Evidence and Provenance System
 
+> **Start here**
+> - [`START_HERE.md`](START_HERE.md)
+> - [`STATUS.md`](STATUS.md)
+> - [`docs/EVIDENCE_SYSTEM_USAGE_GUIDE.md`](docs/EVIDENCE_SYSTEM_USAGE_GUIDE.md)
+> - [Active batch manifest](workflow/batches/REV-003.json)
+> - [Latest handoff](workflow/handoffs/REV-003B_fulltext_audit.md)
+
 Canonical evidence, provenance, novelty-audit, search, and decision records for:
 
 **Pragmatic Commitment Control: Making Latent Pragmatic Misalignments Observable in Collaborative Work**
@@ -19,18 +26,8 @@ See `docs/MASTER_SPECIFICATION.md`.
 
 ## Current status
 
-The repository was initialized from an empty baseline on 2026-07-24. The current draft review stage:
-
-- freezes the available repository, prototype, proposal, bibliography-fragment, and Elicit-input baselines;
-- assigns stable IDs to PCC components, claims, sources, novelty propositions, searches, decisions, and imports;
-- records immutable checksums, preserves raw text inputs, and commits normalized register data;
-- creates linked evidence and provenance registers;
-- adds validation and novelty-language guards;
-- defines the LaTeX traceability-comment convention;
-- establishes the Zotero -> Better BibTeX -> Overleaf workflow; and
-- audits the proposal's current manual bibliography and candidate `.bib` fragments without merging them silently.
-
-The Overleaf/RPI source is checksum-frozen and represented by a repository-safe file inventory. The unmodified archive is not redistributed because its front matter contains a personal committee identifier. Overleaf remains authoritative for source files, figures, and the compiled PDF. The complete authoritative Zotero Better BibTeX export remains pending; `bibliography/references.bib` is therefore still a controlled placeholder.
+See the generated [`STATUS.md`](STATUS.md). It is rendered from the active batch
+pointer and manifest rather than maintained independently in this README.
 
 ## Repository map
 
