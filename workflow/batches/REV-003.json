@@ -6,7 +6,7 @@
   "remediation_baseline_note": "No remediation baseline applies because REV-003 is a literature-evidence and proposal-revision batch.",
   "repositories": {
     "evidence": {
-      "baseline_sha": "b9095616008a4bf1da199cfc90bdde4cebcf91fe",
+      "baseline_sha": "fda7336e81171a14b338f5097eec39d2f02337b3",
       "merge_sha": null
     },
     "prototype": {
