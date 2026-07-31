@@ -1,7 +1,7 @@
 {
   "batch_id": "REV-003",
   "title": "Related Work and closest-prior-work audit",
-  "status": "tier1_fulltext_audit_required",
+  "status": "rev003b_fulltext_audit_complete_rev003a_required",
   "remediation_baseline": null,
   "remediation_baseline_note": "No remediation baseline applies because REV-003 is a literature-evidence and proposal-revision batch.",
   "repositories": {
@@ -25,7 +25,7 @@
   "stages": {
     "prompt_c": {
       "title": "Prompt C launcher",
-      "state": "blocked_on_fulltext_audit"
+      "state": "blocked_on_rev003a_and_combined_tier1_synthesis"
     },
     "prompt_d": {
       "title": "Prompt D launcher",
