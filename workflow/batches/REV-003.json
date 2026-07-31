@@ -22,6 +22,37 @@
     "state": "expected_skipped",
     "condition": "Run only if a later preflight identifies a concrete implementation statement requiring new prototype evidence."
   },
+  "operations": {
+    "source_intake": {
+      "title": "REV-003B full-text intake",
+      "state": "complete",
+      "pr": 17,
+      "merge_sha": "5bfa03ea930770c93dee0be0ce418ad4d07f93ae"
+    },
+    "rev003b_fulltext_audit": {
+      "title": "REV-003B full-text mechanism audit",
+      "state": "complete",
+      "pr": 19,
+      "merge_sha": "99bb1d454f7bb9c4f078ab1e4ad9babaf13dcfc3"
+    }
+  },
+  "current_operation": "rev003b_fulltext_audit",
+  "latest_handoff": "workflow/handoffs/REV-003B_fulltext_audit.md",
+  "source_access": {
+    "exact_full_texts": ["SRC-0007", "SRC-0021"],
+    "proxy_comparators": ["SRC-0036"],
+    "exact_source_gaps": ["SRC-0004"]
+  },
+  "limitations": [
+    "SRC-0004 exact full text remains unavailable and not assessable.",
+    "REV-003A exact full-text audits for SRC-0002, SRC-0003, and SRC-0010 remain required.",
+    "The combined six-source Tier 1 synthesis is not complete.",
+    "NOV-0001 remains candidate."
+  ],
+  "next_authorized_task": "Complete and merge REV-003A exact full-text source cards for SRC-0002, SRC-0003, and SRC-0010.",
+  "housekeeping": [
+    "PR #18 duplicates merged PR #17 and should be closed without merging."
+  ],
   "stages": {
     "prompt_c": {
       "title": "Prompt C launcher",
