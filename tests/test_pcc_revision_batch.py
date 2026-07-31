@@ -28,6 +28,53 @@ class RevisionBatchTests(unittest.TestCase):
         rendered = revision.render_launcher(future_manifest, "prompt_c")
         self.assertIn(revision.UNRESOLVED, rendered)
 
+    def test_null_remediation_baseline_validates(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["remediation_baseline"] = None
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "batch.json"
+            path.write_text(json.dumps(manifest), encoding="utf-8")
+            self.assertIsNone(revision.load_manifest(path)["remediation_baseline"])
+
+    def test_null_remediation_baseline_renders_not_applicable(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["remediation_baseline"] = None
+        rendered = revision.render_launcher(manifest, "prompt_c")
+        self.assertIn("No remediation baseline applies to this batch.", rendered)
+        self.assertNotIn("`None`", rendered)
+
+    def test_rejects_all_zero_remediation_baseline(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["remediation_baseline"] = revision.ZERO_SHA
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "batch.json"
+            path.write_text(json.dumps(manifest), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "all-zero SHA sentinel"):
+                revision.load_manifest(path)
+
+    def test_rejects_malformed_non_null_remediation_baseline(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["remediation_baseline"] = "abc123"
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "batch.json"
+            path.write_text(json.dumps(manifest), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "null or a 40-character lowercase SHA"):
+                revision.load_manifest(path)
+
+    def test_real_remediation_sha_renders_as_evidence_boundary(self):
+        rendered = revision.render_launcher(self.manifest, "closure")
+        self.assertIn(f"`{self.manifest['remediation_baseline']}` is a remediation baseline", rendered)
+
+    def test_rev003_launcher_has_no_false_remediation_provenance(self):
+        manifest = revision.load_manifest(ROOT / "workflow/batches/REV-003.json")
+        rendered = revision.render_launcher(manifest, "prompt_c")
+        self.assertIn("No remediation baseline applies to this batch.", rendered)
+        self.assertIn("literature-evidence and proposal-revision batch", rendered)
+        self.assertNotIn(f"`{manifest['repositories']['evidence']['baseline_sha']}`", rendered)
+        self.assertNotIn(revision.ZERO_SHA, rendered)
+        self.assertNotIn("`null`", rendered)
+        self.assertNotIn("`None`", rendered)
+
     def test_collects_prototype_manifests_from_fixture(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

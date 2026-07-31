@@ -2,10 +2,11 @@
   "batch_id": "REV-003",
   "title": "Related Work and closest-prior-work audit",
   "status": "tier1_fulltext_audit_required",
-  "remediation_baseline": "0000000000000000000000000000000000000000",
+  "remediation_baseline": null,
+  "remediation_baseline_note": "No remediation baseline applies because REV-003 is a literature-evidence and proposal-revision batch.",
   "repositories": {
     "evidence": {
-      "baseline_sha": "aac665d0de5a2c63bdbecb5cd565197f0460fde6",
+      "baseline_sha": "b9095616008a4bf1da199cfc90bdde4cebcf91fe",
       "merge_sha": null
     },
     "prototype": {
