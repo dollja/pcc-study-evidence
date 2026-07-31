@@ -1,21 +1,31 @@
 # Import REV-003B raw full texts and Piwek proxy
 
-Run in the Codex environment connected to:
+Run this only after the raw-PDF staging pull request has been reviewed and
+merged into `main`.
+
+Use the Codex environment connected to:
 
 ```text
 dollja/pcc-study-evidence
 ```
 
-Use **Code mode** on branch:
+Use **Code mode** from:
 
 ```text
-codex/stage-rev003b-fulltext-intake-package
+main
+```
+
+Codex should create the bounded work branch:
+
+```text
+codex/import-rev003b-fulltexts-with-piwek-proxy
 ```
 
 ## Critical source rule
 
-Use the raw PDF files committed to this branch. Do **not** use `curl`, browser
-retrieval, agent internet, arXiv downloads, DOI redirects, or Elicit summaries.
+Use the raw PDF files committed to this repository. Do **not** use `curl`,
+browser retrieval, agent internet, arXiv downloads, DOI redirects, or Elicit
+summaries.
 
 The required repository paths are:
 
@@ -62,11 +72,8 @@ REV-003
 SOURCE-INTAKE SUBTASK:
 REV-003B-FULLTEXT-INTAKE
 
-EXPECTED MAIN BASELINE:
+HISTORICAL PRE-INTAKE BASELINE:
 bb4788ed2065a531ca165bf7ef3c0bdbb92ad912
-
-STAGING BRANCH:
-codex/stage-rev003b-fulltext-intake-package
 
 TARGET WORK BRANCH:
 codex/import-rev003b-fulltexts-with-piwek-proxy
@@ -79,8 +86,9 @@ git status --short
 git rev-parse HEAD
 ```
 
-The tree must be clean. Report the actual branch-head SHA. Do not reset or
-discard newer reviewed work.
+The tree must be clean. Record the actual current `main` SHA as the source
+intake baseline. It will be newer than the historical baseline after the
+raw-PDF staging PR merges. Do not reset or discard newer reviewed work.
 
 ## Verify the exact source files
 
@@ -180,13 +188,14 @@ Do not:
 - claim that the exact 1997 source was reviewed;
 - transfer mechanisms attributed to the 1997 source to the 2000 report.
 
-Use a new stable source ID. At the expected baseline the next unused source ID
-appears to be `SRC-0036`; verify this against `data/sources.csv` before
-assigning it. If that ID is no longer unused, use the next unused source ID and
-rename the committed file consistently in the same PR.
+Use a new stable source ID. At the historical baseline the next unused source
+ID appeared to be `SRC-0036`; verify this against the current
+`data/sources.csv` before assigning it. If that ID is no longer unused, use the
+next unused source ID and rename the committed file consistently in the same
+PR.
 
-`SRC-0004` must remain an exact-source access gap and be coded `not_assessable`
-for mechanisms that require its full text.
+`SRC-0004` must remain an exact-source access gap and be coded
+`not_assessable` for mechanisms that require its full text.
 
 ## Read before editing
 
@@ -289,7 +298,7 @@ Confirm:
 
 Report:
 
-- actual starting branch-head SHA;
+- actual starting `main` SHA;
 - exact files changed;
 - source and import IDs assigned;
 - all three paths, checksums, sizes, and page counts;
