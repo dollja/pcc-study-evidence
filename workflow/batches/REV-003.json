@@ -1,0 +1,38 @@
+{
+  "batch_id": "REV-003",
+  "title": "Related Work and closest-prior-work audit",
+  "status": "tier1_fulltext_audit_required",
+  "remediation_baseline": "0000000000000000000000000000000000000000",
+  "repositories": {
+    "evidence": {
+      "baseline_sha": "aac665d0de5a2c63bdbecb5cd565197f0460fde6",
+      "merge_sha": null
+    },
+    "prototype": {
+      "baseline_sha": "c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4",
+      "merge_sha": null
+    },
+    "proposal": {
+      "baseline_sha": "a73275c9675eccf303d588229371a7d198b4a2e3",
+      "merge_sha": null
+    }
+  },
+  "prototype_prompt_b": {
+    "state": "expected_skipped",
+    "condition": "Run only if a later preflight identifies a concrete implementation statement requiring new prototype evidence."
+  },
+  "stages": {
+    "prompt_c": {
+      "title": "Prompt C launcher",
+      "state": "blocked_on_fulltext_audit"
+    },
+    "prompt_d": {
+      "title": "Prompt D launcher",
+      "state": "blocked_on_prompt_c_merge"
+    },
+    "closure": {
+      "title": "Closure launcher",
+      "state": "not_started"
+    }
+  }
+}

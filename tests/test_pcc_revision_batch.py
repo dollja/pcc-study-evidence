@@ -24,7 +24,8 @@ class RevisionBatchTests(unittest.TestCase):
                 revision.load_manifest(path)
 
     def test_future_merges_render_explicit_unresolved_markers(self):
-        rendered = revision.render_launcher(self.manifest, "prompt_c")
+        future_manifest = revision.load_manifest(ROOT / "workflow/batches/REV-003.json")
+        rendered = revision.render_launcher(future_manifest, "prompt_c")
         self.assertIn(revision.UNRESOLVED, rendered)
 
     def test_collects_prototype_manifests_from_fixture(self):

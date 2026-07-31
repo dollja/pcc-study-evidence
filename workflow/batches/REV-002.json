@@ -1,14 +1,16 @@
 {
   "batch_id": "REV-002",
-  "status": "prompt_d_ready_after_postmerge_correction",
+  "status": "complete",
   "remediation_baseline": "3f27be060438a4d01433ac12bcf037b4767431e0",
   "repositories": {
     "evidence": {
       "baseline_sha": "785f6e90160c34eb2b74b3ccfa2c5449801b17f4",
-      "merge_sha": "39e8df1f5a6d414fc492ef1abc973b45604d50f2",
+      "merge_sha": "aac665d0de5a2c63bdbecb5cd565197f0460fde6",
       "prompt_c_pr": 8,
       "prompt_c_pr_head_sha": "8c9b59f7e2e0f9f6d1099614fba7bb3f47ace613",
-      "prompt_c_merge_sha": "39e8df1f5a6d414fc492ef1abc973b45604d50f2"
+      "prompt_c_merge_sha": "39e8df1f5a6d414fc492ef1abc973b45604d50f2",
+      "evidence_closure_pr": 10,
+      "evidence_closure_merge_sha": "aac665d0de5a2c63bdbecb5cd565197f0460fde6"
     },
     "prototype": {
       "baseline_sha": "3f27be060438a4d01433ac12bcf037b4767431e0",
@@ -16,21 +18,32 @@
     },
     "proposal": {
       "baseline_sha": "2596859c0e22bda81a7c0ff750dd632423b87b17",
-      "merge_sha": null
+      "merge_sha": "a73275c9675eccf303d588229371a7d198b4a2e3",
+      "revision_pr": 5,
+      "revision_merge_sha": "0174fd08b07e6959e3c76b7ae3cdd486e66ee205",
+      "traceability_follow_up_pr": 6,
+      "final_commit_sha": "a73275c9675eccf303d588229371a7d198b4a2e3"
     }
   },
+  "prototype_limitations": [
+    {
+      "description": "Generalized non-adjacent second-order chronology remains unverified.",
+      "evidence_record": "PEV-0010",
+      "evidence_status": "recorded_unverified"
+    }
+  ],
   "stages": {
     "prompt_c": {
       "title": "Prompt C launcher",
-      "state": "completed_with_postmerge_correction"
+      "state": "complete"
     },
     "prompt_d": {
       "title": "Prompt D launcher",
-      "state": "ready"
+      "state": "complete"
     },
     "closure": {
       "title": "Closure launcher",
-      "state": "blocked_on_prompt_d_merge"
+      "state": "complete"
     }
   }
 }
