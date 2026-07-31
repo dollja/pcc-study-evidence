@@ -3,13 +3,13 @@
 > Derived launcher. The batch manifest—not conversation history or this prompt—is
 > authoritative for SHAs and stage state.
 
-Stage state: `blocked_on_prompt_d_merge`
+Stage state: `complete`
 
 ## Recorded repository revisions
 
-- `evidence` merge SHA: `39e8df1f5a6d414fc492ef1abc973b45604d50f2`
+- `evidence` merge SHA: `aac665d0de5a2c63bdbecb5cd565197f0460fde6`
 - `prototype` merge SHA: `c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4`
-- `proposal` merge SHA: `UNRESOLVED—record only after the corresponding PR is reviewed and merged`
+- `proposal` merge SHA: `a73275c9675eccf303d588229371a7d198b4a2e3`
 
 Future merge SHAs may be recorded only after the corresponding PR has been reviewed and merged.
 

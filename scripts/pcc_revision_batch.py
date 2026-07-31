@@ -8,6 +8,7 @@ from pathlib import Path
 
 
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+ZERO_SHA = "0" * 40
 UNRESOLVED = "UNRESOLVED—record only after the corresponding PR is reviewed and merged"
 STAGES = ("prompt_c", "prompt_d", "closure")
 
@@ -24,6 +25,15 @@ def load_manifest(path):
             value = repository.get(field)
             if value is not None and not SHA_RE.fullmatch(value):
                 raise ValueError(f"{name}.{field} must be null or a 40-character lowercase SHA")
+    remediation_baseline = manifest.get("remediation_baseline")
+    if remediation_baseline == ZERO_SHA:
+        raise ValueError("remediation_baseline must not use the all-zero SHA sentinel")
+    if remediation_baseline is not None and not (
+        isinstance(remediation_baseline, str) and SHA_RE.fullmatch(remediation_baseline)
+    ):
+        raise ValueError(
+            "remediation_baseline must be null or a 40-character lowercase SHA"
+        )
     missing = set(STAGES) - set(manifest.get("stages", {}))
     if missing:
         raise ValueError("missing stages: " + ", ".join(sorted(missing)))
@@ -69,11 +79,20 @@ def render_launcher(manifest, stage):
         "",
         "## Evidence boundary",
         "",
-        f"`{manifest['remediation_baseline']}` is a remediation baseline and audit trail,",
-        "not canonical reproduced PEV evidence. It is excluded from canonical PEV findings",
-        "and does not provide novelty proof.",
-        "",
     ])
+    remediation_baseline = manifest["remediation_baseline"]
+    if remediation_baseline is None:
+        lines.append("No remediation baseline applies to this batch.")
+        if manifest.get("remediation_baseline_note"):
+            lines.append(manifest["remediation_baseline_note"])
+        lines.append("")
+    else:
+        lines.extend([
+            f"`{remediation_baseline}` is a remediation baseline and audit trail,",
+            "not canonical reproduced PEV evidence. It is excluded from canonical PEV findings",
+            "and does not provide novelty proof.",
+            "",
+        ])
     return "\n".join(lines)
 
 

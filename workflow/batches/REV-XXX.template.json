@@ -1,7 +1,7 @@
 {
   "batch_id": "REV-000",
   "status": "planned",
-  "remediation_baseline": "0000000000000000000000000000000000000000",
+  "remediation_baseline": null,
   "repositories": {
     "evidence": {"baseline_sha": null, "merge_sha": null},
     "prototype": {"baseline_sha": null, "merge_sha": null},
