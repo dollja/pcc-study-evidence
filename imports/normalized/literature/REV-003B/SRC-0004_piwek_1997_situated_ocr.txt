@@ -1,0 +1,421 @@
+         Situated action and commitment in dialogue
+                                            P.L.A. Piwek
+                                        e-mail: piwek
+                                                  @ ipo.tue.nl
+
+
+
+
+                                                Abstract
+      In this paper, a formal model of communication in dialogues is described. Recently, a shift
+      seems to have taken place from the traditional perception of the computer as a mere tool for
+      carrying out a task towards a view of the computer as an assistant with which one or more
+      users work together — i.e., cooperate — on a task. Now, cooperation is rooted in coordination
+      of actions, which in turn can be achieved through communication. The model for cooperative
+      behaviour in dialogues that we propose is based on observational studies into human-human
+      communication carried out at IPO and findings from Discourse Analysis and Conversation
+      Analysis. Our main concern will be to explain the role of the basic constituents of conversa-
+      tion that are known as adjacency pairs. Central in our model are rules that describe how the
+      commitments of the dialogue partners are updated during the course of a dialogue and how
+      they constrain the possible moves of the dialogue participants. We take communication to be
+      part of the overall activity in which the interlocutors are engaged. Such a model is needed if
+      we want to account for the fact that information is often exchanged in dialogues in a sequence
+      of alternating (combinations of) modalities (linguistic means, object manipulations and/or
+      gestures). The model was used for the behaviour rules of an artificial assistant that is imple-
+      mented as part of the DenK (Dialogue Modelling and Knowledge Acquisition) project.
+
+
+
+Introduction
+In the past decade, there has been a trend towards building systems that give users the idea
+that they are working together with an assistant on a task rather than doing the work on
+their own. Building such systems requires an understanding of what makes behaviour co-
+operative. Grice (1975) proposed that in conversations cooperative behaviour partly de-
+pends on the fact that the interlocutors obey the maxim be relevant. In this paper, we
+present a partial analysis of this maxim. This analysis includes the description of a com-
+putational model of a dialogue agent that can produce relevant actions.
+       The type of relevance to which we limit our attention has been introduced by con-
+versation analysts under the name conditional relevance. On the basis of large corpora of
+naturally occurring dialogues, conversation analysts came to the conclusion that the basic
+building blocks of conversations are utterance pairs, often referred to as adjacency pairs.!
+The first and the second part of such a pair are tied together by relevance: ‘When one ut-
+terance (A) is conditionally relevant on another (S), then the occurrence of S provides for
+the relevance of the occurrence of A. If A occurs, it occurs (i.e., is produced and heard)
+as “responsive to” S, ...” (Schegloff, 1972, p. 76). For instance, an answer is relevant for
+the question that the speaker intends to answer.
+      Now, we can specify our goal more precisely. We aim at providing a model, given
+an utterance u and the context c of this utterance, that computes a set of responses R to u,
+
+ 1. The term is misleading because utterances related by conditional relevance do not need to be ad-
+    jacent. They may, for instance, be separated by a clarification subdialogue.
+
+  IPO Annual Progress Report 32 1997
+
+                                                   89
+such that every response r in R is conditionally relevant for u. The model is supposed to
+clarify the informal notion of conditional relevance. Note that we assume the second part
+is dependent on the first part and the context. Furthermore, the model does not yield a
+unique second part for a context and a first part. This is due to the fact that some aspects
+of the context are not captured by our model. More specifically, we do not work out how
+an addressee chooses to believe one piece of information rather than another piece of in-
+formation that is inconsistent with the aforementioned information.
+      Our model is based on the conception that actions, whether directly on the physical
+world or via the use of symbols, are only effective in virtue offeedback. We base this view
+on a theory of action (Perceptual Control Theory) proposed in Powers (1972). The other
+ingredient of our model is a formal notion of context and context change. For this part, we
+extend techniques developed in formal semantics (e.g., Stalnaker, 1978; Kamp, 1981).
+       The task we have set ourselves might seem to lack ambition. The danger is of ending
+up with a model that states such trivia as: an agent can react to a question with an answer
+and to a command with a signal of compliance. Besides the fact that it is quite difficult to
+spell out in detail what counts as an answer, one challenging problem is that, for instance,
+questions do not always require an answer (only). Take, ‘Can you pass me the salt?’.
+Though this sentence expresses a question, the addressee is usually expected to do more
+than just answer it. Moreover, the relation between the parts of the following exchange is
+not trivial: ‘A: It is getting late, Mildred. B: But I’m having such fun’ (based on Levinson,
+1983, p. 290). Our model covers these cases.
+      The remainder of this paper consists of the following parts. In the next section, we
+briefly describe the conceptions of action and context, which we use as a point of depar-
+ture for our model. Subsequently, we present the model itself and analyse some dialogue
+fragments using the model. Finally, we present some concluding remarks.
+
+
+Action, reaction and context
+The importance of feedback for action is the main tenet of Perceptual Control Theory
+(PCT; Powers, 1972). According to PCT behaviour is the control of perception. Roughly
+speaking, an agent has an internal reference signal (the technical term for a goal) and at-
+tempts to minimize the difference between this reference signal and its perceptions of the
+world through action.
+       When an agent acts in the physical world, e.g., when trying to open a door, the feed-
+back is often instantaneous. Note that this is very useful if an agent has several goals that
+stand in relations of dependency. Suppose our agent wants to enter a room after having
+opened the door to the room. Clearly, the agent can only initiate the appropriate action af-
+ter it has observed that the door is open (as a consequence of opening the door). As long
+as this information is not yet available, the agent cannot initiate the act of entering the
+room, since its success depends on the success of the door opening action. Alternatively,
+if the agent receives the feedback that the door is locked, it can also undertake the appro-
+priate actions (e.g., fetch the keys). In other words, without feedback the agent is left with-
+out knowing what to do next.
+       In naturally occurring dialogues, a human agent often acts via another human agent.
+For instance, an agent might issue a command which the addressee then carries out. The
+action does not need to be performed immediately and it may not be perceptible to the is-
+
+
+                                              90
+  suer of the command, like for example a telephone conversation. This clearly creates a
+  feedback problem. We propose to interpret the adjacency pairs that have been observed
+  by conversation analysts as supplying the natural solution to this problem.
+       Basically, the second part of an adjacency pair supplies information about what the
+  reaction is or will be to the first part. Note that nevertheless there is still a significant dif-
+  ference between physical actions and actions in a conversation. A physical action directly
+  causes a change in the physical world. If the physical world 1s changed by issuing a com-
+  mand, a more intricate situation arises. An agent can, for instance, tell another agent the
+  following “Hand in your paper first thing in the morning’. In this case, the speaker at-
+  tempts to bring about an action through changing the disposition of the addressee to act
+  as required. If the addressee accepts the command, then he/she will become committed
+  and, therefore, disposed to carry it out. Note that this requires storage of commitments.
+  The general issue of information storage as part of communication has been examined ex-
+  tensively in formal semantics. These examinations gave rise to several frameworks for
+. modelling information states and the dynamics of these states.
+        In formal semantics, the insight that the meaning of sentences resides in context-
+  change effects has become widely acknowledged in the past fifteen years (mainly due to
+  problems concerning cross-sentential anaphora, e.g., Kamp, 1981). Many frameworks
+  have been proposed to model context change. Two components are common to all these
+  frameworks.
+       Firstly, there is some notion of the information state. The information state covers
+ part of the context. It models the dialogue situation as it is perceived by the agent. It does
+ not include aspects of the context that are external to the agent. Secondly, the meaning of
+ an utterance is specified as a transition between information states. An information state
+ can, for instance, be modelled as a collection of sentences in a formal language (these sen-
+ tences represent the explicit beliefs of the agent to whom the information state belongs;
+ the implicit beliefs consist of the logical consequences of the explicit beliefs). Consider
+ an utterance of the sentence ‘Mary walks’. The effect is that the information state before
+ the utterance is extended with the translation (into a formal language) of “Mary walks’.
+ The advantage of identifying the information state with a set of sentences belonging to a
+ formal language is that it allows us to mechanically derive the logical consequences of
+ these sentences.
+       This aforementioned type of framework is well-suited for modelling monologues,
+ where one can focus on the effect that a monologue has on the information state of the
+ addressee. When it comes to dialogue, there are some evident limitations. It is not clear
+ what to do with requests and questions. Furthermore, even assertions do not fit the
+ straightforward information state change model: an agent does not automatically update
+ his or her information state when confronted with new information; more accurately, it
+ evaluates the information in the light of the information that is already available to it.
+ What is more, we have assumed that information is always transmitted without any diffi-
+ culty. This is not a realistic assumption. In fact, dialogues often contain exchanges that
+ are meant to overcome transmission problems. Such exchanges do not fit the aforemen-
+ tioned framework either. Finally, we need the means to represent which information ‘be-
+ longs’ to which agent. In other words, which agent is committed to which information.
+ Each of these issues will be addressed in the next section.
+
+
+
+
+                                                 O1
+Context change in dialogues
+In this section, we present our notion of an information state for dialogues — henceforth,
+the dialogue state — and some rules governing the change of such states. A dialogue state
+consists of two main parts: firstly, a part that records which interlocutor is committed to
+which information, and secondly, a part that contains representations of utterances about
+which the interlocutors still have to reach some form of agreement. It is important to re-
+member that an information state is always associated with an agent. In other words, it is
+a subjective view on the dialogue situation. There is no dialogue state independent of the
+representation that each of the interlocutors has of it. In the following, we model the in-
+formation state of agent A and assume that A is engaged in a dialogue with agent B.
+
+Commitments
+Agent A’s dialogue state records which information A and B are each committed to. Com-
+mitments constrain both the linguistic and non-linguistic actions of an agent by requiring
+the actions to be compatible with the content of the commitments. In case of linguistic ac-
+tions, this means that an agent is not expected/supposed to assert a proposition if it is com-
+mitted to its denial. The counterpart of this constraint is proposed in Hamblin (1971). He
+points out that an agent should agree to a statement if it is committed to this statement or
+some statement from which it clearly follows. There also are systematic relations between
+commitments and the physical actions of an agent. If an agent is committed to the infor-
+mation that some event will occur, it is not expected to undertake actions that prevent this
+event from happening. In case the event concerns an action by the agent itself, it is expect-
+ed to carry out the action. In other words, commitment of an agent to a (future) action is
+equivalent to the agent intending to do that action.”
+      During a dialogue, the interlocutors maintain a record of their own and each other’s
+commitments. Formally, the commitments A ascribes to itself and B are sets of sentences
+(in a formal language). Henceforth we shall refer to these sets as 4 and I’p. Some sen-
+tences may be a member of both I’, and Ip. This means that there are some commitments
+which A believes A and B both have.
+      Some of the commitments of A and some of the commitments of B will be public.
+For instance, if A asserts ‘It rains’ and B signals that it received this message, then it will
+be a public fact amongst A and B that A is committed to ‘It rains’. The subset of T, of
+commitments which A publicly holds will be called 4g 4. Similarly, we have Tyg, C
+Ip. Those commitments which A and B both publicly hold are their shared commitments:
+Map, Le.. Tag =Uap 4     Uap = The relations between the different Is are depicted in
+Figure 1.
+
+
+ 2. Note that reasoning about commitments allows for unified reasoning about past events, i.e., be-
+    liefs the agent entertains about how the world was, and future actions that an agent is committed
+    to, i.e., the intentions of this agent. The need for dealing with beliefs and intentions as part of one
+    framework for reasoning is stressed by, for instance, Cawsey, Galliers, Logan, Reece and Sparck
+    Jones (1993). They do, however, still distinguish between beliefs, goals and planning operators,
+    whereas we reduce them to commitments.
+ 3. For the sake of simplicity we have only considered explicitly shared commitments. We do not take
+    into account commitments which are shared, because they can be derived from both Fz 4 and
+    T'4p,p- A piece of information is a shared commitment only if it is a member of Pap4 and 4p p.
+
+
+
+                                                     92
+                   Figure I: Euler-Venn Diagram of the relations between differ-
+                   ent types of commitments as they are represented in the dia-
+                   logue state of agent A.
+
+
+      We already pointed out that an agent can reason with the sentences (which represent
+commitments) in its information state. We will assume that there are commitments which
+ play a specific role in reasoning; they are called default rules. The prototypical default
+ rule corresponds to ‘If something is a bird, then it can fly’. Suppose we obtain the infor-
+ mation that ‘Tweety is a bird’. Then we may derive that ‘Tweety can fly’, using the afore-
+ mentioned rule. Thus commitment to the default rule and to the information that “Tweety
+‘is a bird’ commits us to ‘Tweety can fly’. If, however, we now come to know that ‘Tweety
+ is a penguin’, and we are committed to the information that penguins are exceptions to the
+ aforementioned rule (‘If something is a penguin, then it cannot fly’), then this new infor-
+ mation blocks inferring the commitment that ‘Tweety can fly’. In other words, if one is
+committed to P due to a default rule, then this commitment is cancelled if one becomes
+committed to some piece of information that contradicts P.
+
+Change
+We are now going to look into the immediate change of the information state effected by
+an utterance. For that purpose, we look into the second part of the information state, which
+consists of two components: A; and Ap. Both are modelled as lists. These components are
+used to (temporarily) store, the informative and the dialectical dimension of an utterance,
+respectively. This is best explained by examining what effect utterances of the basic three
+sentence types have on A, and Ap.
+      Take an utterance of the declarative sentence ‘It rains’. We call this a declarative
+act. Both interlocutors will add a representation to their A, of (i) the content of the sen-
+tence (this is a judgment, i.e., a statement of how the world is, has been or will be), which
+in this case is simply a formal equivalent of ‘It rains’, and (ii) the information that the
+speaker is publicly committed to this judgment. For instance, if A uttered ‘It rains’, then
+A expressed its own commitment to ‘It rains’. The dialectical move made by uttering this
+sentence is that the judgment ‘It rains’ is now under discussion, i.e., it is added to Ap. In
+other words, A invites B to present its position — acceptance or denial — with respect to
+this judgment.
+       The utterance of the imperative sentence ‘Open the door’, an imperative act or re- |
+quest, consists of addition to A, of (i) the judgment that the addressee opens the door, and
+(11) the information that (i) is a commitment of the addressee. In other words, the speaker
+imposes a commitment on the addressee. The move has no dialectical dimension; it does
+not affect Ap. An utterance of an interrogative sentence ‘Does it rain?’ (an interrogative
+
+
+                                                93
+act) can be seen as a specialized type of imperative act. It consists of (1) the judgment that
+the addressee answers the question ‘Does it rain?’, and (ii) the information that (i) is a
+commitment of the addressee.
+
+Rules
+We have sketched the impact of declarative, imperative and interrogative acts on A; and
+Ap. Let us now propose two rules that constrain
+                                             the range of utterances that can be pro-
+duced given a certain A; and Ap.
+
+   (Ry) (TRANSPARENCY RULE) If J is first on Aj, then the addressee of J should sig-
+   nal whether he/she has adapted his/her representation of the commitments in ac-
+   cordance with J.
+
+Suppose that A requests B to do X. Then B should signal whether B really accepts X as a
+commitment. B can, for instance, do so by saying ‘Ok, I will do X’, or “No, I won’t (do
+X)’. In the case of compliance, the result will be that it has become public that B is com-
+mitted to X (formally: X € [4p g; ‘e’ reads ‘member of’).
+
+   (Rp) (DISCUSSION RULE) If judgment J is first on Ap, then the addressee of J
+   should signal his/her position with respect to J.
+
+Suppose that A asserts P. Thereby A expresses commitment to P. If this is successfully
+communicated to B then we have P € I’, 4. B can react to A’s assertion, in line with (Rp)
+(and (Ry)), by also asserting P. Successful communication leads to P € I'4g 4. Note that
+this adds up to P € yz (see Figure 1). In other words, P has become a shared commit-
+ment.
+      There is no room to give a full inventory of the signals referred to in (Ry) and (Rp).
+But let us present some possibilities:
+
+   ASSERTION of P. Reaction in line with (Rp) and thereby also (Ry): (1) Explicit
+   signal: deny or confirm P. (2) Implicit signal: Proceed with a new utterance that
+   presupposes or entails P.
+
+   REQUEST TO DO X. Reaction in line with (Rj): assert or deny X, actually do X (in
+   the case of a question this comes down to answering the question).
+
+
+Some applications
+Consider the following exchange, which is based on Levinson (1983, p. 290), where it is
+introduced as a problem for speech act theory.*
+
+        A: It is getting late, Mildred.
+        B: But, I’m having fun.
+
+
+
+ 4. Searle (1969).
+
+
+
+                                             94
+Now suppose that I’, p contains the default rule ‘If it is getting late and X is at a party, then
+X goes home’. Furthermore, suppose B accepts that it is getting late, but is having fun and
+therefore does not want to be committed to going home. B has the following dilemma: if
+B accepts A’s assertion, B also accepts that they go home. B’s utterance has been devised
+to cancel this commitment. In other words, B reacts to the judgment ‘It is getting late’ by
+cancelling one of its default implications, assuming that ‘if X is having fun, X normally
+does not go home’. By taking I", into account we can model that B’s utterance is condi-
+tionally relevant for that of A. This suggests the following addressee-based strategy: when
+accepting a judgment, check whether acceptance leads to undesired commitments. If pos-
+sible, cancel the commitments in question explicitly. So-called indirect speech acts can be
+treated along similar lines. Consider:
+
+      A: Can you pass me the salt.
+      B: Sure, here you are.
+
+Suppose we have the following default cooperation rule as a part of I", p: if an interlocutor
+X can do action o then X does a. This means that answering the question with ‘Sure’ at
+the same time commits B by default to B passes the salt. That B indeed was committed to
+B passes the salt is witnessed by saying ‘here you are’. Note that for the case B wants to
+answer ‘yes’ but does not want to carry out the action, the agent should use ‘but’: compare
+‘Sure, but I won’t’ with ‘Sure, I won’t’. The latter construction seems extremely odd. The
+obligatory use of ‘but’ is evidence for the fact that we are dealing with default inferences
+(‘but’ is usually assigned the meaning of contrast or presentation of non-expected infor-
+mation. Exceptions to a default are typical pieces of non-expected information).
+      Finally, we want to demonstrate the value of our model in a multimodal setting.
+Consider the following exchange, which is a translation of a Dutch exchange from
+Cremers (1993, p. 9). The setting for this exchange was as follows: A and B can commu-
+nicate through typed input via terminals and share a visually perceptible workspace, in
+which B can manipulate blocks and A may only point at those blocks:
+
+      A: Remove the uppermost of the two green cubes.
+      B: (does it).
+      A: OK...
+
+After A’s first utterance, B becomes committed to removing the uppermost of the two
+green cubes. B signals this by performing the action. This action, however, also has a di-
+alectical dimension: the judgment under discussion is ‘that B removed the uppermost of
+the two green cubes’. Because A is the expert in this setting and it is crucial that the right
+blocks are moved, A explicitly accepts the judgment that was under discussion. Thus, it
+becomes a shared commitment that B took the right block.
+
+
+Concluding remarks
+In this paper, we explained the notion of conditional relevance in terms of a model of in-
+formation state change in dialogue. The crucial ingredients of the model are a broad no-
+tion of commitments (covering what traditionally have been called beliefs and intentions)
+
+
+                                              95
+and the storing of information whose status has not yet been settled. The conversational
+rules we proposed operated on the information that has not yet been settled, but always
+against the background of the (shared) commitments. Furthermore, we analysed requests
+in terms of commitments that a speaker assigns to a hearer. We showed how the presence
+of default rules amongst the shared commitments can account for a certain amount of in-
+directness in conversations. The default rules were proposed as being used by the dialogue
+agents. In this respect, our application of defaults differs from that in Perrault (1990) and
+Beun (1994), where default rules are used to reason about the behaviour of the dialogue
+agents from a third person perspective.
+      It was beyond the scope of this paper to present a detailed comparison with alterna-
+tive proposals from the literature. For that purpose, we refer to Piwek (1998) and Piwek
+(to appear), where we compare our approach with traditional speech act theory and sug-
+gest how our model contributes to modern collaborative planning theories (e.g., Loch-
+baum, 1994) by providing a detailed analysis of the relation between the linguistic form
+and the function of utterances.
+      Finally, we would like to point out that substantial parts of the information state
+change model for dialogue that we have described have been used in the DenK system
+(see Ahn, Beun, Borghuis, Bunt & Van Overveld, 1995; Bunt, Ahn, Kievit, Piwek, Ver-
+linden, Beun & Borghuis, 1998).
+
+
+Acknowledgements
+Thanks are due to Don Bouwhuis, Dik Hermes and Emiel Krahmer for helpful comments.
+The research reported in this paper was financially supported by the Cooperation Unit of
+Brabant Universities (SOBU).
+
+
+References
+Ahn, R.M.C., Beun, R.J., Borghuis, T., Bunt, H.C. & Van Overveld, C.W.A.M. (1995). The DenK archi-
+       tecture: A fundamental approach to UIs. Artificial Intelligence Review, 8(3), 431-445.
+Beun, R.J. (1994). Mental state recognition and communicative effects. Journal of Pragmatics, 21, 191-
+       214.
+Bunt, H., Ahn, R., Kievit, L., Piwek, P., Verlinden, M., Beun, R.J. & Borghuis, T. (1998). Multimodal co-
+       operation with the DenK system. In: H. Bunt, R.J. Beun, T. Borghuis, L. Kievit and M. Verlinden
+       (Eds.): Proceedings of the Second International Conference on Cooperative Multimodal Communi-
+       cation, CMC-98, Tilburg, The Netherlands, January 28-30, 1998, 44-62.
+Cawsey, A., Galliers, J., Logan, B., Reece, S. & Sparck Jones, K. (1993). Revising beliefs and intentions:
+       A unified framework for agent interaction. Proceedings of the Conference of the Society for Artificial
+       Intelligence and the Simulation of Behaviour, AISB-93, Birmingham, UK, March 29 - April 2, 1993.
+Cremers, A.H.M. (1993). Transcripties terminal-dialogen blokken-experiment. [PO Report No. 1049.
+Grice, H.P. (1975). Logic and conversation. In: P. Cole and J. Morgan (Eds.): Syntax and Semantics, Vol-
+       ume 3: Speech Acts, 41-58. New York: Academic Press.
+Hamblin, C. (1971). Mathematica! models of dialogue. Theoria, 37, 130-155.
+Kamp, H. (1981). A theory of truth and semantic interpretation. In: J. Groenendijk, T. Janssen and M.
+       Stokhof (Eds.): Formal Methods in Study of Language, 277-322. Amsterdam: Mathematical Centre
+       Tracts 136.
+Levinson, S. (1983). Pragmatics. Cambridge: Cambridge University Press.
+Lochbaum, K. (1994). Using Collaborative Plans to Model the Intentional Structure of Discourse. Ph.D.
+       thesis, Harvard University, Cambridge, MA, USA.
+
+
+
+                                                    96
+Perrault, R.    (1990). An application of default logic to speech act theory. In: J. Cohen, J. Morgan and M.
+       Pollack (Eds.): Intentions in Communication, 161-185. Cambridge, MA: The MIT Press.
+Piwek, P. (1998). Cooperative interpretation of communicative actions. In: H. Bunt, R.J.Beun, T. Borghuis,
+       L. Kievit and M. Verlinden (Eds.): Proceedings of the Second International Conference on Cooper-
+       ative Multimodal Communication, CMC-98, Tilburg, The Netherlands, January 28-30, 1998, 122-
+       134.
+Piwek, P. (to appear). Logic, Information and Conversation. Ph.D. thesis, Eindhoven University of Tech-
+        nology, Eindhoven, The Netherlands.
+Powers, W. (1972). Behavior: The Control of Perception. Chicago, IL: Aldine Publishing Company.
+Schegloff, E.A. (1972). Notes on a conversational practice: Formulating place. In: D. Sudnow (Ed.): Studies
+        in Social Interaction, 75-119, New York: The Free Press.
+Searle, J. (1969). Speech Acts: An Essay in the Philosophy of Language. Cambridge: Cambridge University
+       Press.
+Stalnaker, R. (1978). Assertion. In: P. Cole (Ed.): Syntax and Semantics, Volume 9: Pragmatics, 315-332.
+       New York: Academic Press.
+
+
+
+
+                                                     97
+
