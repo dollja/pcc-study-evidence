@@ -1,5 +1,10 @@
 # SRC-0004 exact-source access gap
 
+> **Historical provenance note (2026-08-03):** A later bounded intake resolved
+> this access gap by registering the exact 1997 scan and non-authoritative OCR
+> reading aids. The exact-source mechanism audit and novelty adjudication remain
+> pending; the historical REV-003B assessment below is preserved unchanged.
+
 ## Source sought and status
 
 - **Exact source:** Pla/Paul Piwek, *Situated Action and Commitment in Dialogue* (1997), DOI `10.1037/e490652004-001`, registered as `SRC-0004`.
