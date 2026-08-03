@@ -43,7 +43,9 @@ class SystemStatusTests(unittest.TestCase):
     def test_missing_handoff_is_detected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = self.fixture(directory)
-            (root / "workflow/handoffs/REV-003B_fulltext_audit.md").unlink()
+            path = root / "workflow/batches/REV-003.json"
+            manifest = json.loads(path.read_text())
+            (root / manifest["latest_handoff"]).unlink()
             with self.assertRaisesRegex(FileNotFoundError, "latest handoff"):
                 status.load_state(root)
 
@@ -51,6 +53,12 @@ class SystemStatusTests(unittest.TestCase):
         rendered = status.render_status(status.load_state(ROOT))
         self.assertIn("Source intake and substantive mechanism audit are distinct operations", rendered)
         self.assertIn("REV-003B full-text mechanism audit", rendered)
+        self.assertIn("SRC-0004 exact full-text mechanism audit", rendered)
+
+    def test_exact_src0004_access_gap_is_resolved(self):
+        rendered = status.render_status(status.load_state(ROOT))
+        self.assertIn("`SRC-0004`", rendered)
+        self.assertIn("**Exact-source access gaps:** None recorded.", rendered)
 
     def test_nov0001_remains_candidate(self):
         rendered = status.render_status(status.load_state(ROOT))
