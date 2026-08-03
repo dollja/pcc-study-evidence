@@ -1,7 +1,7 @@
 {
   "batch_id": "REV-003",
   "title": "Related Work and closest-prior-work audit",
-  "status": "rev003b_exact_src0004_audit_complete_rev003a_required",
+  "status": "rev003a_fulltext_audit_ready",
   "remediation_baseline": null,
   "remediation_baseline_note": "No remediation baseline applies because REV-003 is a literature-evidence and proposal-revision batch.",
   "repositories": {
@@ -46,28 +46,41 @@
       "state": "complete",
       "pr": 23,
       "merge_sha": "9ac12523457393ffc60f2c2aac6a0871a1ffb675"
+    },
+    "rev003a_fulltext_intake": {
+      "title": "REV-003A exact full-text intake",
+      "state": "complete",
+      "pr": 25,
+      "merge_sha": "b660090a06898de6257498a76390046d7f3d3716"
     }
   },
-  "current_operation": "src0004_exact_fulltext_audit",
-  "latest_handoff": "workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md",
+  "current_operation": "rev003a_fulltext_intake",
+  "latest_handoff": "workflow/handoffs/REV-003A_fulltext_intake.md",
   "source_access": {
-    "exact_full_texts": ["SRC-0007", "SRC-0021", "SRC-0004"],
+    "exact_full_texts": [
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0004",
+      "SRC-0007",
+      "SRC-0010",
+      "SRC-0021"
+    ],
     "proxy_comparators": ["SRC-0036"],
     "exact_source_gaps": []
   },
   "limitations": [
     "The exact SRC-0004 audit found a possible near-equivalent on actor-associated public/shared commitments, response-governed commitment update, multimodal evidence, and situated consequence-bearing action; those mechanisms are inherited rather than PCC novelties.",
     "The exact SRC-0004 audit did not locate explicit action-sensitive candidate-value comparison, calibrated evidence-sufficiency or abstention, formal organizational authorization, durable workflow-artifact governance, participant-facing diagnostic rationale or appeal, or empirical diagnostic evaluation.",
-    "REV-003A exact full-text audits for SRC-0002, SRC-0003, and SRC-0010 remain required.",
+    "Exact full texts for SRC-0002, SRC-0003, and SRC-0010 are now available, but their thirteen-field mechanism audits have not yet been completed.",
     "The combined Tier 1 synthesis is not complete.",
     "NOV-0001 remains candidate."
   ],
-  "next_authorized_task": "Complete and merge REV-003A exact full-text source cards for SRC-0002, SRC-0003, and SRC-0010, then perform the deliberate combined Tier 1 synthesis.",
+  "next_authorized_task": "Run and merge the REV-003A exact full-text mechanism audit for SRC-0002, SRC-0003, and SRC-0010; then perform the deliberate combined Tier 1 synthesis.",
   "housekeeping": [],
   "stages": {
     "prompt_c": {
       "title": "Prompt C launcher",
-      "state": "blocked_on_rev003a_and_combined_tier1_synthesis"
+      "state": "blocked_on_rev003a_audit_and_combined_tier1_synthesis"
     },
     "prompt_d": {
       "title": "Prompt D launcher",
