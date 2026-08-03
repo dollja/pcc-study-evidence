@@ -129,42 +129,37 @@ jobs:
               item['size_bytes'] = str(path.stat().st_size)
 
           manifest_path = root / 'imports/manifest.csv'
-          with manifest_path.open(newline='', encoding='utf-8') as stream:
-              reader = csv.DictReader(stream)
-              manifest_fields = reader.fieldnames
-              rows = list(reader)
-          assert manifest_fields is not None
-
-          existing_ids = {row['import_id'] for row in rows}
-          existing_paths = {row['stored_path'] for row in rows}
+          manifest_text = manifest_path.read_text(encoding='utf-8')
           for item in files:
-              if item['import_id'] in existing_ids:
+              if f"\n{item['import_id']}," in "\n" + manifest_text:
                   raise SystemExit(f"import ID already used: {item['import_id']}")
-              if item['path'] in existing_paths:
+              if item['path'] in manifest_text:
                   raise SystemExit(f"stored path already registered: {item['path']}")
-              rows.append({
-                  'import_id': item['import_id'],
-                  'original_filename': item['filename'],
-                  'stored_path': item['path'],
-                  'sha256': item['sha256'],
-                  'size_bytes': item['size_bytes'],
-                  'media_type': 'application/pdf',
-                  'duplicate_of': '',
-                  'import_status': 'included',
-                  'authority_role': 'full_text_audit_source',
-                  'notes': f"{item['source_id']}; {item['version']}. Exact source identity and controls verified at intake; presence does not constitute a mechanism audit. Source URL: {item['url']}",
-              })
 
-          with manifest_path.open('w', newline='', encoding='utf-8') as stream:
-              writer = csv.DictWriter(stream, fieldnames=manifest_fields, lineterminator='\n')
-              writer.writeheader()
-              writer.writerows(rows)
+          with manifest_path.open('a', newline='', encoding='utf-8') as stream:
+              writer = csv.writer(stream, lineterminator='\n')
+              for item in files:
+                  writer.writerow([
+                      item['import_id'],
+                      item['filename'],
+                      item['path'],
+                      item['sha256'],
+                      item['size_bytes'],
+                      'application/pdf',
+                      '',
+                      'included',
+                      'full_text_audit_source',
+                      f"{item['source_id']}; {item['version']}. Exact source identity and controls verified at intake; presence does not constitute a mechanism audit. Source URL: {item['url']}",
+                  ])
 
           sources_path = root / 'data/sources.csv'
           with sources_path.open(newline='', encoding='utf-8') as stream:
               reader = csv.DictReader(stream)
               source_fields = reader.fieldnames
-              source_rows = list(reader)
+              source_rows = [
+                  {key: (value or '') for key, value in row.items() if key is not None}
+                  for row in reader
+              ]
           assert source_fields is not None
 
           by_id = {item['source_id']: item for item in files}
@@ -191,7 +186,7 @@ jobs:
               raise SystemExit(f'missing source rows: {sorted(missing)}')
 
           with sources_path.open('w', newline='', encoding='utf-8') as stream:
-              writer = csv.DictWriter(stream, fieldnames=source_fields, lineterminator='\n')
+              writer = csv.DictWriter(stream, fieldnames=source_fields, lineterminator='\n', extrasaction='ignore')
               writer.writeheader()
               writer.writerows(source_rows)
 
