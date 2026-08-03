@@ -7,18 +7,18 @@
 
 - **Active batch:** `REV-003`
 - **Batch title:** Related Work and closest-prior-work audit
-- **Batch status:** `rev003a_fulltext_audit_ready`
-- **Last completed operation:** REV-003A exact full-text intake
-- **Current evidence operation merge SHA:** `b660090a06898de6257498a76390046d7f3d3716` (PR #25)
+- **Batch status:** `tier1_fulltext_audit_complete_preflight_required`
+- **Last completed operation:** REV-003A exact full-text mechanism audit and combined Tier 1 synthesis
+- **Current evidence operation merge SHA:** `6c9259de75f921283a3610a1382541d266dd60d9` (PR #28)
 - **Proposal baseline:** `a73275c9675eccf303d588229371a7d198b4a2e3`
 - **Prototype baseline:** `c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4`
 
 ## Current authorized work
 
-- **Task:** REV-003A exact full-text mechanism audit (`rev003a_fulltext_audit`)
+- **Task:** REV-003 Chapter 2 exact-source evidence preflight (`rev003_chapter2_evidence_preflight`)
 - **Task state:** `ready`
-- **Description:** Run and merge the thirteen-field exact full-text mechanism audit for SRC-0002, SRC-0003, and SRC-0010; then perform the deliberate combined Tier 1 synthesis.
-- **Authorization files:** [`workflow/handoffs/REV-003A_fulltext_intake.md`](workflow/handoffs/REV-003A_fulltext_intake.md), [`imports/raw/literature/REV-003A/README.md`](imports/raw/literature/REV-003A/README.md), [`workflow/handoffs/REV-003_scope.md`](workflow/handoffs/REV-003_scope.md), [`workflow/handoffs/REV-003B_fulltext_audit.md`](workflow/handoffs/REV-003B_fulltext_audit.md), [`workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md`](workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md)
+- **Description:** Adjudicate the exact current chapters/02_background.tex against the completed Tier 1 audit before revising proposal prose.
+- **Authorization files:** [`docs/prompts/evidence_preflight.md`](docs/prompts/evidence_preflight.md), [`workflow/handoffs/REV-003A_fulltext_audit.md`](workflow/handoffs/REV-003A_fulltext_audit.md), [`audits/REV-003A/cross_source_matrix.md`](audits/REV-003A/cross_source_matrix.md), [`workflow/handoffs/REV-003B_fulltext_audit.md`](workflow/handoffs/REV-003B_fulltext_audit.md), [`workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md`](workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md), [`data/novelty_propositions.csv`](data/novelty_propositions.csv), [`data/novelty_source_links.csv`](data/novelty_source_links.csv), [`data/claim_source_links.csv`](data/claim_source_links.csv)
 
 A `ready` task state means work may proceed now. Downstream proposal stages may
 remain gated without blocking the current evidence task.
@@ -30,6 +30,7 @@ remain gated without blocking the current evidence task.
 - **SRC-0004 exact full-text intake:** `complete` (PR #22, merge `4f0cee14945929d195ced29daa9725e416d8b3be`)
 - **SRC-0004 exact full-text mechanism audit:** `complete` (PR #23, merge `9ac12523457393ffc60f2c2aac6a0871a1ffb675`)
 - **REV-003A exact full-text intake:** `complete` (PR #25, merge `b660090a06898de6257498a76390046d7f3d3716`)
+- **REV-003A exact full-text mechanism audit and combined Tier 1 synthesis:** `complete` (PR #28, merge `6c9259de75f921283a3610a1382541d266dd60d9`)
 
 ## Source-access controls
 
@@ -42,7 +43,7 @@ recorded as complete only when its merged artifacts and handoff are present.
 
 ## Downstream stage gates
 
-- **Prompt C launcher:** `blocked_on_rev003a_audit_and_combined_tier1_synthesis`
+- **Prompt C launcher:** `blocked_on_exact_chapter2_preflight`
 - **Prompt D launcher:** `blocked_on_prompt_c_merge`
 - **Closure launcher:** `not_started`
 
@@ -52,16 +53,15 @@ when **Task state** above is `ready`.
 ## Control state
 
 - **Current work state:** `ready`.
-- **Next authorized task:** Run and merge the REV-003A exact full-text mechanism audit for SRC-0002, SRC-0003, and SRC-0010; then perform the deliberate combined Tier 1 synthesis.
-- **Latest handoff:** [`workflow/handoffs/REV-003A_fulltext_intake.md`](workflow/handoffs/REV-003A_fulltext_intake.md)
-- **Prompt C downstream gate:** `blocked_on_rev003a_audit_and_combined_tier1_synthesis`.
+- **Next authorized task:** Adjudicate the exact current chapters/02_background.tex against the completed Tier 1 audit before revising proposal prose.
+- **Latest handoff:** [`workflow/handoffs/REV-003A_fulltext_audit.md`](workflow/handoffs/REV-003A_fulltext_audit.md)
+- **Prompt C downstream gate:** `blocked_on_exact_chapter2_preflight`.
 
 ### Unresolved limitations
 
 - The exact SRC-0004 audit found a possible near-equivalent on actor-associated public/shared commitments, response-governed commitment update, multimodal evidence, and situated consequence-bearing action; those mechanisms are inherited rather than PCC novelties.
 - The exact SRC-0004 audit did not locate explicit action-sensitive candidate-value comparison, calibrated evidence-sufficiency or abstention, formal organizational authorization, durable workflow-artifact governance, participant-facing diagnostic rationale or appeal, or empirical diagnostic evaluation.
-- Exact full texts for SRC-0002, SRC-0003, and SRC-0010 are now available, but their thirteen-field mechanism audits have not yet been completed.
-- The combined Tier 1 synthesis is not complete.
+- Within the exact reviewed Tier 1 sources, the bounded residual is the joint diagnostic combination of explicit action-sensitive candidate-value comparison; evidence-sufficiency and abstention under formal role/authority and durable artifact/workflow constraints; a participant-facing record of evidence, rationale, and consequences; a path to challenge the diagnostic decision; and direct evaluation of correctness, calibration, and contestability. This residual is not a priority conclusion.
 - NOV-0001 remains candidate.
 
 ### Repository housekeeping
