@@ -5,7 +5,7 @@
 > - [`STATUS.md`](STATUS.md)
 > - [`docs/EVIDENCE_SYSTEM_USAGE_GUIDE.md`](docs/EVIDENCE_SYSTEM_USAGE_GUIDE.md)
 > - [Active batch manifest](workflow/batches/REV-003.json)
-> - [Latest handoff](workflow/handoffs/REV-003B_fulltext_audit.md)
+> - [Latest handoff](workflow/handoffs/REV-003_evidence_finalization.md)
 
 Canonical evidence, provenance, novelty-audit, search, and decision records for:
 

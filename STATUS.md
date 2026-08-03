@@ -7,21 +7,20 @@
 
 - **Active batch:** `REV-003`
 - **Batch title:** Related Work and closest-prior-work audit
-- **Batch status:** `tier1_fulltext_audit_complete_preflight_required`
+- **Batch status:** `evidence_finalization_blocked_on_author_confirmations`
 - **Last completed operation:** REV-003A exact full-text mechanism audit and combined Tier 1 synthesis
 - **Current evidence operation merge SHA:** `6c9259de75f921283a3610a1382541d266dd60d9` (PR #28)
 - **Proposal baseline:** `a73275c9675eccf303d588229371a7d198b4a2e3`
 - **Prototype baseline:** `c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4`
 
-## Current authorized work
+## Current task
 
-- **Task:** REV-003 Chapter 2 exact-source evidence preflight (`rev003_chapter2_evidence_preflight`)
-- **Task state:** `ready`
-- **Description:** Adjudicate the exact current chapters/02_background.tex against the completed Tier 1 audit before revising proposal prose.
-- **Authorization files:** [`docs/prompts/evidence_preflight.md`](docs/prompts/evidence_preflight.md), [`workflow/handoffs/REV-003A_fulltext_audit.md`](workflow/handoffs/REV-003A_fulltext_audit.md), [`audits/REV-003A/cross_source_matrix.md`](audits/REV-003A/cross_source_matrix.md), [`workflow/handoffs/REV-003B_fulltext_audit.md`](workflow/handoffs/REV-003B_fulltext_audit.md), [`workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md`](workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md), [`data/novelty_propositions.csv`](data/novelty_propositions.csv), [`data/novelty_source_links.csv`](data/novelty_source_links.csv), [`data/claim_source_links.csv`](data/claim_source_links.csv)
+- **Task:** REV-003 author confirmations for evidence finalization (`rev003_author_confirmations`)
+- **Task state:** `blocked`
+- **Description:** Resolve the six author-confirmation questions recorded in the evidence-finalization handoff before creating canonical claim, decision, source-link, or section-map records.
+- **Authorization files:** [`workflow/handoffs/REV-003_evidence_finalization.md`](workflow/handoffs/REV-003_evidence_finalization.md), [`docs/prompts/evidence_finalization.md`](docs/prompts/evidence_finalization.md)
 
-A `ready` task state means work may proceed now. Downstream proposal stages may
-remain gated without blocking the current evidence task.
+A `blocked` task state means downstream work is not authorized until the recorded blockers are resolved.
 
 ## Completed evidence operations
 
@@ -43,19 +42,19 @@ recorded as complete only when its merged artifacts and handoff are present.
 
 ## Downstream stage gates
 
-- **Prompt C launcher:** `blocked_on_exact_chapter2_preflight`
+- **Prompt C launcher:** `blocked_on_author_confirmations`
 - **Prompt D launcher:** `blocked_on_prompt_c_merge`
 - **Closure launcher:** `not_started`
 
 These gate states describe later stages. They are not the state of the current task
-when **Task state** above is `ready`.
+when **Task state** above is `blocked`.
 
 ## Control state
 
-- **Current work state:** `ready`.
-- **Next authorized task:** Adjudicate the exact current chapters/02_background.tex against the completed Tier 1 audit before revising proposal prose.
-- **Latest handoff:** [`workflow/handoffs/REV-003A_fulltext_audit.md`](workflow/handoffs/REV-003A_fulltext_audit.md)
-- **Prompt C downstream gate:** `blocked_on_exact_chapter2_preflight`.
+- **Current work state:** `blocked`.
+- **Next authorized task:** No downstream task is authorized until the six author-confirmation questions in the latest handoff are resolved.
+- **Latest handoff:** [`workflow/handoffs/REV-003_evidence_finalization.md`](workflow/handoffs/REV-003_evidence_finalization.md)
+- **Prompt C downstream gate:** `blocked_on_author_confirmations`.
 
 ### Unresolved limitations
 
