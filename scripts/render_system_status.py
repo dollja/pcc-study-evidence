@@ -60,9 +60,14 @@ def _items(values: list[str]) -> list[str]:
     return [f"- {value}" for value in values] or ["- None recorded."]
 
 
+def _inline_ids(values: list[str]) -> str:
+    return ", ".join(f"`{item}`" for item in values) if values else "None recorded."
+
+
 def render_status(manifest: dict) -> str:
     """Return deterministic Markdown for a validated active manifest."""
-    operation = manifest["operations"][manifest["current_operation"]]
+    operations = manifest["operations"]
+    operation = operations[manifest["current_operation"]]
     repositories = manifest["repositories"]
     access = manifest["source_access"]
     stages = manifest["stages"]
@@ -76,24 +81,33 @@ def render_status(manifest: dict) -> str:
         "",
         f"- **Active batch:** `{manifest['batch_id']}`",
         f"- **Batch title:** {manifest['title']}",
+        f"- **Batch status:** `{manifest['status']}`",
         f"- **Last completed operation:** {operation['title']}",
         f"- **Current evidence operation merge SHA:** `{operation['merge_sha']}` (PR #{operation['pr']})",
         f"- **Proposal baseline:** `{repositories['proposal']['baseline_sha']}`",
         f"- **Prototype baseline:** `{repositories['prototype']['baseline_sha']}`",
         "",
-        "## Source-intake controls",
+        "## Completed evidence operations",
         "",
-        f"- **Source intake:** `{manifest['operations']['source_intake']['state']}` (PR #{manifest['operations']['source_intake']['pr']}, merge `{manifest['operations']['source_intake']['merge_sha']}`)",
-        f"- **Exact full texts available:** {', '.join(f'`{item}`' for item in access['exact_full_texts'])}",
-        f"- **Proxy comparator available:** {', '.join(f'`{item}`' for item in access['proxy_comparators'])}",
-        f"- **Exact-source access gap:** {', '.join(f'`{item}`' for item in access['exact_source_gaps'])}",
+    ]
+    for value in operations.values():
+        lines.append(
+            f"- **{value['title']}:** `{value['state']}` (PR #{value['pr']}, merge `{value['merge_sha']}`)"
+        )
+    lines.extend([
         "",
-        "Source intake and substantive mechanism audit are distinct operations. The audit is",
-        f"recorded as `{manifest['operations']['rev003b_fulltext_audit']['state']}` only because its merged artifacts and handoff are present.",
+        "## Source-access controls",
+        "",
+        f"- **Exact full texts available:** {_inline_ids(access['exact_full_texts'])}",
+        f"- **Proxy comparators available:** {_inline_ids(access['proxy_comparators'])}",
+        f"- **Exact-source access gaps:** {_inline_ids(access['exact_source_gaps'])}",
+        "",
+        "Source intake and substantive mechanism audit are distinct operations. An audit is",
+        "recorded as complete only when its merged artifacts and handoff are present.",
         "",
         "## Stage states",
         "",
-    ]
+    ])
     for key in ("prompt_c", "prompt_d", "closure"):
         lines.append(f"- **{stages[key]['title']}:** `{stages[key]['state']}`")
     lines.extend([
