@@ -109,15 +109,19 @@ def render_status(manifest: dict) -> str:
         f"- **Proposal baseline:** `{repositories['proposal']['baseline_sha']}`",
         f"- **Prototype baseline:** `{repositories['prototype']['baseline_sha']}`",
         "",
-        "## Current authorized work",
+        "## Current task",
         "",
         f"- **Task:** {next_task['title']} (`{next_task['id']}`)",
         f"- **Task state:** `{next_task['state']}`",
         f"- **Description:** {next_task['description']}",
         f"- **Authorization files:** {_inline_links(next_task['authorization_files'])}",
         "",
-        "A `ready` task state means work may proceed now. Downstream proposal stages may",
-        "remain gated without blocking the current evidence task.",
+        (
+            "A `ready` task state means work may proceed now. Downstream proposal stages may "
+            "remain gated without blocking the current evidence task."
+            if next_task["state"] == "ready"
+            else "A `blocked` task state means downstream work is not authorized until the recorded blockers are resolved."
+        ),
         "",
         "## Completed evidence operations",
         "",

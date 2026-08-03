@@ -1,7 +1,7 @@
 {
   "batch_id": "REV-003",
   "title": "Related Work and closest-prior-work audit",
-  "status": "tier1_fulltext_audit_complete_preflight_required",
+  "status": "evidence_finalization_blocked_on_author_confirmations",
   "remediation_baseline": null,
   "remediation_baseline_note": "No remediation baseline applies because REV-003 is a literature-evidence and proposal-revision batch.",
   "repositories": {
@@ -61,7 +61,7 @@
     }
   },
   "current_operation": "rev003a_fulltext_audit",
-  "latest_handoff": "workflow/handoffs/REV-003A_fulltext_audit.md",
+  "latest_handoff": "workflow/handoffs/REV-003_evidence_finalization.md",
   "source_access": {
     "exact_full_texts": [
       "SRC-0002",
@@ -81,27 +81,21 @@
     "NOV-0001 remains candidate."
   ],
   "next_task": {
-    "id": "rev003_chapter2_evidence_preflight",
-    "title": "REV-003 Chapter 2 exact-source evidence preflight",
-    "state": "ready",
-    "description": "Adjudicate the exact current chapters/02_background.tex against the completed Tier 1 audit before revising proposal prose.",
+    "id": "rev003_author_confirmations",
+    "title": "REV-003 author confirmations for evidence finalization",
+    "state": "blocked",
+    "description": "Resolve the six author-confirmation questions recorded in the evidence-finalization handoff before creating canonical claim, decision, source-link, or section-map records.",
     "authorization_files": [
-      "docs/prompts/evidence_preflight.md",
-      "workflow/handoffs/REV-003A_fulltext_audit.md",
-      "audits/REV-003A/cross_source_matrix.md",
-      "workflow/handoffs/REV-003B_fulltext_audit.md",
-      "workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md",
-      "data/novelty_propositions.csv",
-      "data/novelty_source_links.csv",
-      "data/claim_source_links.csv"
+      "workflow/handoffs/REV-003_evidence_finalization.md",
+      "docs/prompts/evidence_finalization.md"
     ]
   },
-  "next_authorized_task": "Adjudicate the exact current chapters/02_background.tex against the completed Tier 1 audit before revising proposal prose.",
+  "next_authorized_task": "No downstream task is authorized until the six author-confirmation questions in the latest handoff are resolved.",
   "housekeeping": [],
   "stages": {
     "prompt_c": {
       "title": "Prompt C launcher",
-      "state": "blocked_on_exact_chapter2_preflight"
+      "state": "blocked_on_author_confirmations"
     },
     "prompt_d": {
       "title": "Prompt D launcher",

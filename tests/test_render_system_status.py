@@ -78,16 +78,17 @@ class SystemStatusTests(unittest.TestCase):
         self.assertIn("`SRC-0004`", rendered)
         self.assertIn("**Exact-source access gaps:** None recorded.", rendered)
 
-    def test_chapter2_preflight_is_ready_while_prompt_c_is_downstream_gated(self):
+    def test_finalization_is_blocked_on_author_confirmations(self):
         rendered = status.render_status(status.load_state(ROOT))
-        self.assertIn("**Batch status:** `tier1_fulltext_audit_complete_preflight_required`", rendered)
+        self.assertIn("**Batch status:** `evidence_finalization_blocked_on_author_confirmations`", rendered)
         self.assertIn("**Last completed operation:** REV-003A exact full-text mechanism audit and combined Tier 1 synthesis", rendered)
-        self.assertIn("**Task:** REV-003 Chapter 2 exact-source evidence preflight", rendered)
-        self.assertIn("**Task state:** `ready`", rendered)
-        self.assertIn("**Current work state:** `ready`", rendered)
+        self.assertIn("**Task:** REV-003 author confirmations for evidence finalization", rendered)
+        self.assertIn("**Task state:** `blocked`", rendered)
+        self.assertIn("**Current work state:** `blocked`", rendered)
+        self.assertIn("downstream work is not authorized", rendered)
         self.assertIn("## Downstream stage gates", rendered)
-        self.assertIn("**Prompt C downstream gate:** `blocked_on_exact_chapter2_preflight`", rendered)
-        self.assertNotIn("**Current blocker:**", rendered)
+        self.assertIn("**Prompt C downstream gate:** `blocked_on_author_confirmations`", rendered)
+        self.assertIn("workflow/handoffs/REV-003_evidence_finalization.md", rendered)
 
     def test_nov0001_remains_candidate(self):
         rendered = status.render_status(status.load_state(ROOT))

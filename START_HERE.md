@@ -10,7 +10,7 @@ exploratory and is never current-state authority.
 - [Register guide](docs/REGISTER_GUIDE.md)
 - [Master Specification](docs/MASTER_SPECIFICATION.md)
 - [Active batch manifest](workflow/batches/REV-003.json)
-- [Latest handoff](workflow/handoffs/REV-003B_fulltext_audit.md)
+- [Latest handoff](workflow/handoffs/REV-003_evidence_finalization.md)
 
 Validate with:
 
