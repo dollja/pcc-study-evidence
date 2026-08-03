@@ -13,6 +13,16 @@
 - **Proposal baseline:** `a73275c9675eccf303d588229371a7d198b4a2e3`
 - **Prototype baseline:** `c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4`
 
+## Current authorized work
+
+- **Task:** REV-003A exact full-text mechanism audit (`rev003a_fulltext_audit`)
+- **Task state:** `ready`
+- **Description:** Run and merge the thirteen-field exact full-text mechanism audit for SRC-0002, SRC-0003, and SRC-0010; then perform the deliberate combined Tier 1 synthesis.
+- **Authorization files:** [`workflow/handoffs/REV-003A_fulltext_intake.md`](workflow/handoffs/REV-003A_fulltext_intake.md), [`imports/raw/literature/REV-003A/README.md`](imports/raw/literature/REV-003A/README.md), [`workflow/handoffs/REV-003_scope.md`](workflow/handoffs/REV-003_scope.md), [`workflow/handoffs/REV-003B_fulltext_audit.md`](workflow/handoffs/REV-003B_fulltext_audit.md), [`workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md`](workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md)
+
+A `ready` task state means work may proceed now. Downstream proposal stages may
+remain gated without blocking the current evidence task.
+
 ## Completed evidence operations
 
 - **REV-003B full-text intake:** `complete` (PR #17, merge `5bfa03ea930770c93dee0be0ce418ad4d07f93ae`)
@@ -30,17 +40,21 @@
 Source intake and substantive mechanism audit are distinct operations. An audit is
 recorded as complete only when its merged artifacts and handoff are present.
 
-## Stage states
+## Downstream stage gates
 
 - **Prompt C launcher:** `blocked_on_rev003a_audit_and_combined_tier1_synthesis`
 - **Prompt D launcher:** `blocked_on_prompt_c_merge`
 - **Closure launcher:** `not_started`
 
+These gate states describe later stages. They are not the state of the current task
+when **Task state** above is `ready`.
+
 ## Control state
 
-- **Current blocker:** blocked_on_rev003a_audit_and_combined_tier1_synthesis.
+- **Current work state:** `ready`.
 - **Next authorized task:** Run and merge the REV-003A exact full-text mechanism audit for SRC-0002, SRC-0003, and SRC-0010; then perform the deliberate combined Tier 1 synthesis.
 - **Latest handoff:** [`workflow/handoffs/REV-003A_fulltext_intake.md`](workflow/handoffs/REV-003A_fulltext_intake.md)
+- **Prompt C downstream gate:** `blocked_on_rev003a_audit_and_combined_tier1_synthesis`.
 
 ### Unresolved limitations
 
