@@ -75,6 +75,19 @@
     "The combined Tier 1 synthesis is not complete.",
     "NOV-0001 remains candidate."
   ],
+  "next_task": {
+    "id": "rev003a_fulltext_audit",
+    "title": "REV-003A exact full-text mechanism audit",
+    "state": "ready",
+    "description": "Run and merge the thirteen-field exact full-text mechanism audit for SRC-0002, SRC-0003, and SRC-0010; then perform the deliberate combined Tier 1 synthesis.",
+    "authorization_files": [
+      "workflow/handoffs/REV-003A_fulltext_intake.md",
+      "imports/raw/literature/REV-003A/README.md",
+      "workflow/handoffs/REV-003_scope.md",
+      "workflow/handoffs/REV-003B_fulltext_audit.md",
+      "workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md"
+    ]
+  },
   "next_authorized_task": "Run and merge the REV-003A exact full-text mechanism audit for SRC-0002, SRC-0003, and SRC-0010; then perform the deliberate combined Tier 1 synthesis.",
   "housekeeping": [],
   "stages": {

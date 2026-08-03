@@ -13,6 +13,7 @@ ACTIVE_BATCH = ROOT / "workflow/ACTIVE_BATCH"
 STATUS = ROOT / "STATUS.md"
 BATCH_ID_RE = re.compile(r"REV-\d{3}")
 SHA_RE = re.compile(r"[0-9a-f]{40}")
+NEXT_TASK_STATES = {"ready", "blocked", "in_progress", "complete", "not_started"}
 
 
 def resolve_active_batch(root: Path = ROOT) -> tuple[str, Path]:
@@ -53,6 +54,22 @@ def load_state(root: Path = ROOT) -> dict:
     handoff = root / manifest.get("latest_handoff", "")
     if not handoff.is_file():
         raise FileNotFoundError(f"latest handoff not found: {handoff}")
+
+    next_task = manifest.get("next_task")
+    if not isinstance(next_task, dict):
+        raise ValueError("next_task must be an object describing the current authorized work")
+    if next_task.get("state") not in NEXT_TASK_STATES:
+        raise ValueError(f"next_task.state must be one of {sorted(NEXT_TASK_STATES)}")
+    for field in ("id", "title", "description"):
+        if not isinstance(next_task.get(field), str) or not next_task[field].strip():
+            raise ValueError(f"next_task.{field} must be a non-empty string")
+    authorization_files = next_task.get("authorization_files", [])
+    if not isinstance(authorization_files, list) or not authorization_files:
+        raise ValueError("next_task.authorization_files must be a non-empty list")
+    for relative_path in authorization_files:
+        if not isinstance(relative_path, str) or not (root / relative_path).is_file():
+            raise FileNotFoundError(f"next-task authorization file not found: {relative_path}")
+
     return manifest
 
 
@@ -64,6 +81,10 @@ def _inline_ids(values: list[str]) -> str:
     return ", ".join(f"`{item}`" for item in values) if values else "None recorded."
 
 
+def _inline_links(values: list[str]) -> str:
+    return ", ".join(f"[`{item}`]({item})" for item in values)
+
+
 def render_status(manifest: dict) -> str:
     """Return deterministic Markdown for a validated active manifest."""
     operations = manifest["operations"]
@@ -71,6 +92,7 @@ def render_status(manifest: dict) -> str:
     repositories = manifest["repositories"]
     access = manifest["source_access"]
     stages = manifest["stages"]
+    next_task = manifest["next_task"]
     lines = [
         "# PCC system status",
         "",
@@ -86,6 +108,16 @@ def render_status(manifest: dict) -> str:
         f"- **Current evidence operation merge SHA:** `{operation['merge_sha']}` (PR #{operation['pr']})",
         f"- **Proposal baseline:** `{repositories['proposal']['baseline_sha']}`",
         f"- **Prototype baseline:** `{repositories['prototype']['baseline_sha']}`",
+        "",
+        "## Current authorized work",
+        "",
+        f"- **Task:** {next_task['title']} (`{next_task['id']}`)",
+        f"- **Task state:** `{next_task['state']}`",
+        f"- **Description:** {next_task['description']}",
+        f"- **Authorization files:** {_inline_links(next_task['authorization_files'])}",
+        "",
+        "A `ready` task state means work may proceed now. Downstream proposal stages may",
+        "remain gated without blocking the current evidence task.",
         "",
         "## Completed evidence operations",
         "",
@@ -105,18 +137,22 @@ def render_status(manifest: dict) -> str:
         "Source intake and substantive mechanism audit are distinct operations. An audit is",
         "recorded as complete only when its merged artifacts and handoff are present.",
         "",
-        "## Stage states",
+        "## Downstream stage gates",
         "",
     ])
     for key in ("prompt_c", "prompt_d", "closure"):
         lines.append(f"- **{stages[key]['title']}:** `{stages[key]['state']}`")
     lines.extend([
         "",
+        "These gate states describe later stages. They are not the state of the current task",
+        f"when **Task state** above is `{next_task['state']}`.",
+        "",
         "## Control state",
         "",
-        f"- **Current blocker:** {stages['prompt_c']['state']}.",
+        f"- **Current work state:** `{next_task['state']}`.",
         f"- **Next authorized task:** {manifest['next_authorized_task']}",
         f"- **Latest handoff:** [`{manifest['latest_handoff']}`]({manifest['latest_handoff']})",
+        f"- **Prompt C downstream gate:** `{stages['prompt_c']['state']}`.",
         "",
         "### Unresolved limitations",
         "",
