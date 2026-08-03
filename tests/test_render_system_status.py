@@ -58,8 +58,12 @@ class SystemStatusTests(unittest.TestCase):
             root = self.fixture(directory)
             path = root / "workflow/batches/REV-003.json"
             manifest = json.loads(path.read_text())
-            missing = root / manifest["next_task"]["authorization_files"][0]
-            missing.unlink()
+            relative_path = next(
+                item
+                for item in manifest["next_task"]["authorization_files"]
+                if item != manifest["latest_handoff"]
+            )
+            (root / relative_path).unlink()
             with self.assertRaisesRegex(FileNotFoundError, "next-task authorization file"):
                 status.load_state(root)
 
