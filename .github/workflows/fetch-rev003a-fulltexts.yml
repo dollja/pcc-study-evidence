@@ -1,30 +1,42 @@
 name: fetch-rev003a-fulltexts
 
 on:
-  push:
-    branches:
-      - codex/rev-003a-import-exact-fulltexts
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
 
 permissions:
   contents: write
 
 jobs:
   fetch-and-register:
-    if: contains(github.event.head_commit.message, '[fetch-rev003a]')
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Check out source-intake branch
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          ref: ${{ github.head_ref }}
           fetch-depth: 0
 
+      - name: Stop when intake is already present
+        id: gate
+        shell: bash
+        run: |
+          if test -f imports/raw/literature/REV-003A/SRC-0010_khebour_et_al_2024_lrec_coling.pdf; then
+            echo 'already_present=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'already_present=false' >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Install PDF inspection tools
+        if: steps.gate.outputs.already_present == 'false'
         run: |
           sudo apt-get update
           sudo apt-get install -y poppler-utils
 
       - name: Download exact full-text sources
+        if: steps.gate.outputs.already_present == 'false'
         shell: bash
         run: |
           set -euo pipefail
@@ -44,6 +56,7 @@ jobs:
             --output "$out/SRC-0010_khebour_et_al_2024_lrec_coling.pdf"
 
       - name: Verify identities and page counts
+        if: steps.gate.outputs.already_present == 'false'
         shell: bash
         run: |
           set -euo pipefail
@@ -60,6 +73,7 @@ jobs:
           sha256sum "$out"/*.pdf
 
       - name: Register append-only source intake
+        if: steps.gate.outputs.already_present == 'false'
         shell: bash
         run: |
           set -euo pipefail
@@ -78,7 +92,6 @@ jobs:
                   'source_id': 'SRC-0002',
                   'filename': 'SRC-0002_asher_lascarides_2008_londial.pdf',
                   'title': 'Commitments, Beliefs and Intentions in Dialogue',
-                  'authors': 'Nicholas Asher and Alex Lascarides',
                   'version': 'Author-hosted copy of LONDIAL 2008 proceedings paper; 8 PDF pages',
                   'url': 'https://homepages.inf.ed.ac.uk/alex/papers/londial.pdf',
               },
@@ -87,7 +100,6 @@ jobs:
                   'source_id': 'SRC-0003',
                   'filename': 'SRC-0003_venant_asher_2015_iwcs.pdf',
                   'title': 'Dynamics of Public Commitments in Dialogue',
-                  'authors': 'Antoine Venant and Nicholas Asher',
                   'version': 'ACL Anthology W15-0131; IWCS 2015; 11 PDF pages',
                   'url': 'https://aclanthology.org/W15-0131.pdf',
               },
@@ -96,7 +108,6 @@ jobs:
                   'source_id': 'SRC-0010',
                   'filename': 'SRC-0010_khebour_et_al_2024_lrec_coling.pdf',
                   'title': 'Common Ground Tracking in Multimodal Dialogue',
-                  'authors': 'Ibrahim Khebour et al.',
                   'version': 'ACL Anthology 2024.lrec-main.318; LREC-COLING 2024; 16 PDF pages',
                   'url': 'https://aclanthology.org/2024.lrec-main.318.pdf',
               },
@@ -187,10 +198,9 @@ jobs:
           readme = source_dir / 'README.md'
           readme.write_text(
               '# REV-003A exact full-text intake\n\n'
-              'These files are the controlled source inputs for the REV-003A mechanism audit. '\
-              'Their presence authorizes scoped reading but does not itself verify any mechanism, claim, or novelty conclusion.\n\n'
+              'These files are controlled source inputs for the REV-003A mechanism audit. Their presence authorizes scoped reading but does not verify any mechanism, claim, or novelty conclusion.\n\n'
               '## Sources\n\n' + ''.join(
-                  f"- `{item['source_id']}` — *{item['title']}*; `{item['filename']}`; "
+                  f"- `{item['source_id']}` - *{item['title']}*; `{item['filename']}`; "
                   f"SHA-256 `{item['sha256']}`; {item['size_bytes']} bytes; {item['version']}; "
                   f"source `{item['url']}`.\n"
                   for item in files
@@ -210,7 +220,7 @@ jobs:
               'This operation stages exact full-text inputs for `SRC-0002`, `SRC-0003`, and `SRC-0010`. '
               'It does not perform the thirteen-field mechanism audit and does not change `NOV-0001`.\n\n'
               '## Source controls\n\n' + ''.join(
-                  f"- **{item['source_id']}** — *{item['title']}*; path `{item['path']}`; "
+                  f"- **{item['source_id']}** - *{item['title']}*; path `{item['path']}`; "
                   f"SHA-256 `{item['sha256']}`; size `{item['size_bytes']}` bytes; {item['version']}.\n"
                   for item in files
               ) +
@@ -220,19 +230,17 @@ jobs:
               'retain `NOV-0001` as `candidate`, and do not begin Prompt C until the combined Tier 1 synthesis is reviewed.\n',
               encoding='utf-8',
           )
-
-          print('registered REV-003A source controls:')
-          for item in files:
-              print(item['source_id'], item['sha256'], item['size_bytes'], item['path'])
           PY
 
       - name: Validate evidence repository
+        if: steps.gate.outputs.already_present == 'false'
         run: |
           python scripts/validate_registers.py
           python -m unittest discover -s tests -v
           git diff --check
 
       - name: Commit source intake to branch
+        if: steps.gate.outputs.already_present == 'false'
         shell: bash
         run: |
           set -euo pipefail
@@ -240,4 +248,4 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add imports/raw/literature/REV-003A imports/manifest.csv data/sources.csv workflow/handoffs/REV-003A_fulltext_intake.md
           git commit -m 'Stage exact REV-003A full-text sources'
-          git push origin HEAD:${{ github.ref_name }}
+          git push origin HEAD:${{ github.head_ref }}
