@@ -7,20 +7,27 @@
 
 - **Active batch:** `REV-003`
 - **Batch title:** Related Work and closest-prior-work audit
-- **Last completed operation:** REV-003B full-text mechanism audit
-- **Current evidence operation merge SHA:** `99bb1d454f7bb9c4f078ab1e4ad9babaf13dcfc3` (PR #19)
+- **Batch status:** `rev003b_exact_src0004_audit_complete_rev003a_required`
+- **Last completed operation:** SRC-0004 exact full-text mechanism audit
+- **Current evidence operation merge SHA:** `9ac12523457393ffc60f2c2aac6a0871a1ffb675` (PR #23)
 - **Proposal baseline:** `a73275c9675eccf303d588229371a7d198b4a2e3`
 - **Prototype baseline:** `c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4`
 
-## Source-intake controls
+## Completed evidence operations
 
-- **Source intake:** `complete` (PR #17, merge `5bfa03ea930770c93dee0be0ce418ad4d07f93ae`)
-- **Exact full texts available:** `SRC-0007`, `SRC-0021`
-- **Proxy comparator available:** `SRC-0036`
-- **Exact-source access gap:** `SRC-0004`
+- **REV-003B full-text intake:** `complete` (PR #17, merge `5bfa03ea930770c93dee0be0ce418ad4d07f93ae`)
+- **REV-003B full-text mechanism audit:** `complete` (PR #19, merge `99bb1d454f7bb9c4f078ab1e4ad9babaf13dcfc3`)
+- **SRC-0004 exact full-text intake:** `complete` (PR #22, merge `4f0cee14945929d195ced29daa9725e416d8b3be`)
+- **SRC-0004 exact full-text mechanism audit:** `complete` (PR #23, merge `9ac12523457393ffc60f2c2aac6a0871a1ffb675`)
 
-Source intake and substantive mechanism audit are distinct operations. The audit is
-recorded as `complete` only because its merged artifacts and handoff are present.
+## Source-access controls
+
+- **Exact full texts available:** `SRC-0007`, `SRC-0021`, `SRC-0004`
+- **Proxy comparators available:** `SRC-0036`
+- **Exact-source access gaps:** None recorded.
+
+Source intake and substantive mechanism audit are distinct operations. An audit is
+recorded as complete only when its merged artifacts and handoff are present.
 
 ## Stage states
 
@@ -31,16 +38,17 @@ recorded as `complete` only because its merged artifacts and handoff are present
 ## Control state
 
 - **Current blocker:** blocked_on_rev003a_and_combined_tier1_synthesis.
-- **Next authorized task:** Complete and merge REV-003A exact full-text source cards for SRC-0002, SRC-0003, and SRC-0010.
-- **Latest handoff:** [`workflow/handoffs/REV-003B_fulltext_audit.md`](workflow/handoffs/REV-003B_fulltext_audit.md)
+- **Next authorized task:** Complete and merge REV-003A exact full-text source cards for SRC-0002, SRC-0003, and SRC-0010, then perform the deliberate combined Tier 1 synthesis.
+- **Latest handoff:** [`workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md`](workflow/handoffs/REV-003B_SRC0004_fulltext_audit.md)
 
 ### Unresolved limitations
 
-- SRC-0004 exact full text remains unavailable and not assessable.
+- The exact SRC-0004 audit found a possible near-equivalent on actor-associated public/shared commitments, response-governed commitment update, multimodal evidence, and situated consequence-bearing action; those mechanisms are inherited rather than PCC novelties.
+- The exact SRC-0004 audit did not locate explicit action-sensitive candidate-value comparison, calibrated evidence-sufficiency or abstention, formal organizational authorization, durable workflow-artifact governance, participant-facing diagnostic rationale or appeal, or empirical diagnostic evaluation.
 - REV-003A exact full-text audits for SRC-0002, SRC-0003, and SRC-0010 remain required.
-- The combined six-source Tier 1 synthesis is not complete.
+- The combined Tier 1 synthesis is not complete.
 - NOV-0001 remains candidate.
 
 ### Repository housekeeping
 
-- PR #18 duplicates merged PR #17 and should be closed without merging.
+- None recorded.
