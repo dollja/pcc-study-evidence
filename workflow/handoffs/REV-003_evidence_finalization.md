@@ -7,6 +7,11 @@ claims, author-confirmed decisions, scholarly traceability links, and planned
 proposal section mappings are present in the evidence baseline below. This
 handoff authorizes the Related Work proposal-revision stage.
 
+The derived checkout bundle in
+`workflow/handoffs/REV-003_prompt_c_evidence_bundle.md` collects the required
+author confirmations and approved claims from that immutable baseline for
+downstream use; the canonical CSV registers remain authoritative.
+
 ## Proposal-revision authorization
 
 ```text
