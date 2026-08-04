@@ -1,7 +1,7 @@
 {
   "batch_id": "REV-003",
   "title": "Related Work and closest-prior-work audit",
-  "status": "evidence_finalization_blocked_on_author_confirmations",
+  "status": "prompt_c_complete_proposal_revision_ready",
   "remediation_baseline": null,
   "remediation_baseline_note": "No remediation baseline applies because REV-003 is a literature-evidence and proposal-revision batch.",
   "repositories": {
@@ -58,9 +58,15 @@
       "state": "complete",
       "pr": 28,
       "merge_sha": "6c9259de75f921283a3610a1382541d266dd60d9"
+    },
+    "rev003_prompt_c": {
+      "title": "REV-003 Related Work evidence finalization",
+      "state": "complete",
+      "pr": 34,
+      "merge_sha": "af30cfd64482b54bc61fa7e4b853f738470e4302"
     }
   },
-  "current_operation": "rev003a_fulltext_audit",
+  "current_operation": "rev003_prompt_c",
   "latest_handoff": "workflow/handoffs/REV-003_evidence_finalization.md",
   "source_access": {
     "exact_full_texts": [
@@ -81,25 +87,24 @@
     "NOV-0001 remains candidate."
   ],
   "next_task": {
-    "id": "rev003_author_confirmations",
-    "title": "REV-003 author confirmations for evidence finalization",
-    "state": "blocked",
-    "description": "Resolve the six author-confirmation questions recorded in the evidence-finalization handoff before creating canonical claim, decision, source-link, or section-map records.",
+    "id": "rev003_related_work_revision",
+    "title": "Revise Chapter 2 Background and Related Work",
+    "state": "ready",
+    "description": "Run the proposal-repository Related Work stage against the merged Prompt C evidence baseline and revise chapters/02_background.tex only.",
     "authorization_files": [
-      "workflow/handoffs/REV-003_evidence_finalization.md",
-      "docs/prompts/evidence_finalization.md"
+      "workflow/handoffs/REV-003_evidence_finalization.md"
     ]
   },
-  "next_authorized_task": "No downstream task is authorized until the six author-confirmation questions in the latest handoff are resolved.",
+  "next_authorized_task": "Revise chapters/02_background.tex in dollja/pcc-proposal-latex against the merged Prompt C evidence baseline.",
   "housekeeping": [],
   "stages": {
     "prompt_c": {
       "title": "Prompt C launcher",
-      "state": "blocked_on_author_confirmations"
+      "state": "complete"
     },
     "prompt_d": {
       "title": "Prompt D launcher",
-      "state": "blocked_on_prompt_c_merge"
+      "state": "ready"
     },
     "closure": {
       "title": "Closure launcher",

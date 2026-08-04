@@ -58,12 +58,9 @@ class SystemStatusTests(unittest.TestCase):
             root = self.fixture(directory)
             path = root / "workflow/batches/REV-003.json"
             manifest = json.loads(path.read_text())
-            relative_path = next(
-                item
-                for item in manifest["next_task"]["authorization_files"]
-                if item != manifest["latest_handoff"]
-            )
-            (root / relative_path).unlink()
+            relative_path = "workflow/handoffs/missing.md"
+            manifest["next_task"]["authorization_files"].append(relative_path)
+            path.write_text(json.dumps(manifest), encoding="utf-8")
             with self.assertRaisesRegex(FileNotFoundError, "next-task authorization file"):
                 status.load_state(root)
 
@@ -78,16 +75,16 @@ class SystemStatusTests(unittest.TestCase):
         self.assertIn("`SRC-0004`", rendered)
         self.assertIn("**Exact-source access gaps:** None recorded.", rendered)
 
-    def test_finalization_is_blocked_on_author_confirmations(self):
+    def test_prompt_c_completion_authorizes_proposal_revision(self):
         rendered = status.render_status(status.load_state(ROOT))
-        self.assertIn("**Batch status:** `evidence_finalization_blocked_on_author_confirmations`", rendered)
-        self.assertIn("**Last completed operation:** REV-003A exact full-text mechanism audit and combined Tier 1 synthesis", rendered)
-        self.assertIn("**Task:** REV-003 author confirmations for evidence finalization", rendered)
-        self.assertIn("**Task state:** `blocked`", rendered)
-        self.assertIn("**Current work state:** `blocked`", rendered)
-        self.assertIn("downstream work is not authorized", rendered)
+        self.assertIn("**Batch status:** `prompt_c_complete_proposal_revision_ready`", rendered)
+        self.assertIn("**Last completed operation:** REV-003 Related Work evidence finalization", rendered)
+        self.assertIn("**Task:** Revise Chapter 2 Background and Related Work", rendered)
+        self.assertIn("**Task state:** `ready`", rendered)
+        self.assertIn("**Current work state:** `ready`", rendered)
+        self.assertIn("Revise chapters/02_background.tex", rendered)
         self.assertIn("## Downstream stage gates", rendered)
-        self.assertIn("**Prompt C downstream gate:** `blocked_on_author_confirmations`", rendered)
+        self.assertIn("**Prompt C downstream gate:** `complete`", rendered)
         self.assertIn("workflow/handoffs/REV-003_evidence_finalization.md", rendered)
 
     def test_nov0001_remains_candidate(self):
