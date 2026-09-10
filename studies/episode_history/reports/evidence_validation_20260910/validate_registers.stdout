@@ -1,0 +1,15 @@
+PCC register validation passed: 14 registers, 391 rows.
+- data/claim_decision_links.csv: 47
+- data/claim_prototype_links.csv: 31
+- data/claim_source_links.csv: 53
+- data/claims.csv: 34
+- data/component_provenance.csv: 56
+- data/components.csv: 8
+- data/decisions.csv: 24
+- data/novelty_propositions.csv: 1
+- data/novelty_source_links.csv: 7
+- data/prototype_evidence.csv: 19
+- data/searches.csv: 6
+- data/sources.csv: 36
+- imports/manifest.csv: 24
+- proposal/section_claim_map.csv: 45
