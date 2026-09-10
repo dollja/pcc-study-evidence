@@ -1,0 +1,21 @@
+{
+  "manifest_schema_version": "1.0-proposed",
+  "registered_by_activity": "EPISODE-HISTORY-DEV-20260909",
+  "evidence_role": "not_scholarly_evidence",
+  "pooled_evaluation_allowed": false,
+  "author_review_status": "pending",
+  "novelty_status_change_authorized": false,
+  "study_id": "ACTOR-STATE-CONSTRUCTION",
+  "study_kind": "controlled_supplied_actor_state_construction",
+  "status": "historical_reference_not_reexecuted",
+  "reported_case_count": 36,
+  "observed_case_count_this_activity": null,
+  "source_basis": "Prototype merge commit metadata and supplied revision guidance; cases not rerun or recounted here.",
+  "source_repository": "dollja/interpretive-drift-protoype",
+  "source_commit": "567e272af4697787059fdba1306def441b669e07",
+  "source_paths": ["first_vertical_slice_dataset.py", "pcc_vertical_slice.py", "FIRST_VERTICAL_SLICE.md"],
+  "executed_this_activity": false,
+  "reference_independence": "controlled_supplied_state_not_public_dialogue_inference",
+  "permitted_claim": "Supplied-state representation construction only; does not establish automatic inference of private or second-order state.",
+  "episode_membership": null
+}

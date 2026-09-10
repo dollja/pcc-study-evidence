@@ -1,0 +1,56 @@
+{
+  "activity_id": "EPISODE-HISTORY-DEV-20260909",
+  "scope": "evidence_repository_validation_only",
+  "python": "3.12.13 (main, May  1 2026, 05:53:44) [GCC 13.3.0]",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+  "commands": [
+    {
+      "command": "git status --short",
+      "exit_code": 0
+    },
+    {
+      "command": "git branch --show-current",
+      "exit_code": 0
+    },
+    {
+      "command": "git rev-parse HEAD",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/render_system_status.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/validate_registers.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0
+    }
+  ],
+  "prototype_reproduction": "not_performed",
+  "prototype_access_limitation": "The prototype repository was not present locally, and its configured HTTPS URL required unavailable credentials. No prototype command was run and no PEV status was advanced.",
+  "files_sha256": {
+    "finished_at_utc.txt": "b8510234bc9ee14b7d6855b9a419023df63ca12e9631fc2c404cf6738d26a46b",
+    "git_branch_show_current.exit_code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "git_branch_show_current.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "git_branch_show_current.stdout": "d8c793b6bcb1cbb0fa56115997b896de37caa152e6dc786ff007ee8749c39db0",
+    "git_rev_parse_head.exit_code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "git_rev_parse_head.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "git_rev_parse_head.stdout": "7d49eb2ea696d4fbf698ea3ae3c87d78036e68444edd952258c323eb377a7669",
+    "git_status_short.exit_code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "git_status_short.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "git_status_short.stdout": "f01b2f3e8f2ed58472a73607aa14fbd3087e813cefd89065a1815b5ff53303cb",
+    "render_system_status.exit_code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "render_system_status.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "render_system_status.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "started_at_utc.txt": "85c8cd8bc4d46446ec5f12dd88ddae608f358991f13a8fdb3a843089f04faf52",
+    "unittest.exit_code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "unittest.stderr": "88c4c7f9f193d85c9c80320e928625b4427b828f44dee23f1e3786ddfc322c3c",
+    "unittest.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "validate_registers.exit_code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "validate_registers.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "validate_registers.stdout": "d002b1c70abf6b716bf76e4e88938b1876562384ee7b71c8205b999053caf1d8"
+  }
+}

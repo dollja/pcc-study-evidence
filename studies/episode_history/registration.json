@@ -1,0 +1,25 @@
+{
+  "activity_id": "EPISODE-HISTORY-DEV-20260909",
+  "status": "draft_registration_pending_validation_and_merge",
+  "authorization": "Current author request to run the provided example, register status conservatively and keep evidence sets separate. Not authorization to change the Master Specification.",
+  "evidence_baseline": "d205fe3e40f8e81e3b2eab9217e896008e486ba3",
+  "prototype_baseline": "567e272af4697787059fdba1306def441b669e07",
+  "prototype_source_commit": "4f550a323ac30da1c603fcc5264b98d08b157dc3",
+  "active_workflow_batch_unchanged": "REV-003",
+  "active_workflow_prototype_baseline_unchanged": "c9a38d833de1262cc2a8be0bdaaa1ee9ba777ed4",
+  "manifest_paths": ["acs_construction.json", "actor_state_construction.json", "independent_pilot.json", "main_evaluation.json", "development_example.json"],
+  "counts_are_not_additive": true,
+  "canonical_claims_modified": false,
+  "novelty_register_modified": false,
+  "scholarly_sources_added": false,
+  "review_approval_claimed": false,
+  "evidence_repository_full_validation": "not_run",
+  "evidence_repository_full_tests": "not_run",
+  "git_checkout_state_locator_commands": "not_run; no full network checkout in execution container",
+  "limitations": [
+    "Connector reads confirmed current remote baselines; this is not a complete local state-locator execution.",
+    "An immutable source-import commit is not evidence that execution occurred from a checkout of that commit.",
+    "Historical source membership is unknown, not an empty or zero-sized dataset.",
+    "No historical count, independent annotation, pilot result or main-evaluation result was manufactured."
+  ]
+}
