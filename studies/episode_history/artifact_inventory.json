@@ -1,0 +1,35 @@
+{
+  "source_package_filename": "PCC_Week1_3_Starter_Kit.zip",
+  "source_package_sha256": "df8034493bacd9ac664e1866a4d00724bb11eceb7dfd51ad577ca5ca5a11ad99",
+  "package_checksum_entries_checked": 20,
+  "package_checksum_mismatches": 0,
+  "runtime_source_files_matched_remote_git_blobs": true,
+  "guidance": [
+    {"filename": "Pasted markdown.md", "sha256": "fa67af012273c0b8548b0ff550e6ce3f1832a2a6410de4f4278d459f2aac0a0d", "classification": "user_supplied_revision_guidance_not_scholarly_evidence"},
+    {"filename": "Dissertation Revision Guidance.txt", "sha256": "cd93cb36ddfe5052fc566a37a433a99612b84a40acc3b1df51264cf8dbf1eafe", "classification": "user_supplied_revision_guidance_not_scholarly_evidence"},
+    {"filename": "PCC_Accelerated_Weeks_1_3_Plan.md", "sha256": "a9e32f37ce8b487590737fac2b0a8f75f9d949f88642d4062445b0d858c6370a", "classification": "user_supplied_revision_guidance_not_scholarly_evidence"}
+  ],
+  "artifacts": [
+    {"path_in_source_package": "00_Accelerated_Plan.md", "sha256": "a9e32f37ce8b487590737fac2b0a8f75f9d949f88642d4062445b0d858c6370a", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "01_Claim_Map.md", "sha256": "de623fc0ee9dda6dea208e2e2e5efb05e5261aba2b742e92e750a2940e9d1c5c", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "02_Benchmark_Protocol.md", "sha256": "24264d77bb7e6227a252a1550d5ddb0d11a1d70616615573f800d296866fb918", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "03_Independent_Author_Brief.md", "sha256": "6850bdc92ceeaee4ec9d315592148390faccff52bbc55809650d20d65ae8ab1d", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "04_Annotation_Codebook.md", "sha256": "cebf555c0e640bab1b4ad136c6e37672a973913aad6ab31e18ff1d31e9065d14", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "05_Gates_and_Integration_Prompt.md", "sha256": "f594e12d75bfb7a3da174f92e3a9d1f06be682298d34f8c105f2c426ba282b05", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "06_Closest_Alternatives.md", "sha256": "f9929b9ecc3b0d39be46a2cb38be3f67eee849ee79588040c75f1eb2c4ba4526", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "CHECKSUMS.sha256", "sha256": "505481310034b0783af39dc25995a30acab1358b555ae9d4aab5000e18c2c14f", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "PACKET_STATUS.json", "sha256": "bba1b01fa6738cc831d1066ecae22284037583e39a0379e504b775be0f28de98", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "README.md", "sha256": "06b6362325223e514aef3313c1f709ea6fa9a01597191f187433d067ea5e865a", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "SOURCES.md", "sha256": "bbbe9ea0b333266d5d28492c6b79807db8f13373d69c8853322fbc9bae066f9f", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "examples/scheduling_development_fixture.json", "sha256": "7f816be58903bfa87ef84b262831c5016c409ad27a4d9ffbcef66eb0a3692f9e", "artifact_status": "development_source_locally_executed_not_independently_validated"},
+    {"path_in_source_package": "reports/example_results.json", "sha256": "42d0f6c788ba3750856f7623550d55de59e778dda484582331734c2ccbe4f9da", "artifact_status": "supplied_historical_development_output_not_new_finding"},
+    {"path_in_source_package": "reports/test_results.txt", "sha256": "7e8093efe718305cb7df4b9575b325e0678bc114026869f11d918f3c3450b425", "artifact_status": "supplied_historical_development_output_not_new_finding"},
+    {"path_in_source_package": "scripts/replay_example.py", "sha256": "2d8b57a2c5518d2a44f418b36f75e68178e1224da068a28456b150beae94327c", "artifact_status": "development_source_locally_executed_not_independently_validated"},
+    {"path_in_source_package": "templates/component_annotation_template.json", "sha256": "1716c1a7aa8d7f0d17c1505fbee074f2b675bdbdb7fd9d855bfddb0947af50a8", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "templates/episode_template.json", "sha256": "aae3d3e5efe7fd87057d7db9cbdc7bc95b919b984433b742c3da6b26bc352ac3", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "templates/evidence_manifest_template.json", "sha256": "54e5442467dd60aa2cf58026a96903788869ad5546bb47bfd7330543fe882962", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "templates/rule_pack_template.json", "sha256": "cf4ef997ad44927d420be129a7735916bb86a23fbd7547302f170a955e1b2e9c", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "templates/task_judgment_template.json", "sha256": "f752c4e4e076fd5f12064e0c79c2ee6f0a80f9f08dd67f4c4a75b61f76a722b6", "artifact_status": "proposed_document_or_instrument_not_approved"},
+    {"path_in_source_package": "tests/test_replay.py", "sha256": "a257b975f9a9ab43aa062820b65554804c11af1dfeb2b6a42fa88aab927ce037", "artifact_status": "development_source_locally_executed_not_independently_validated"}
+  ]
+}

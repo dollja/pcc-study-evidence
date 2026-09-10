@@ -1,0 +1,23 @@
+{
+  "manifest_schema_version": "1.0-proposed",
+  "registered_by_activity": "EPISODE-HISTORY-DEV-20260909",
+  "evidence_role": "not_scholarly_evidence",
+  "pooled_evaluation_allowed": false,
+  "author_review_status": "pending",
+  "novelty_status_change_authorized": false,
+  "study_id": "ACS-CONSTRUCTION",
+  "study_kind": "historical_policy_conformance_construction",
+  "status": "historical_reference_not_reexecuted",
+  "reported_case_count": 30,
+  "observed_case_count_this_activity": null,
+  "source_basis": "Supplied Dissertation Revision Guidance.txt; historical count not independently verified here.",
+  "source_repository": null,
+  "source_commit": null,
+  "submission_pdf_sha256": null,
+  "submission_version_status": "unverified",
+  "executed_this_activity": false,
+  "reference_independence": "construction_labels_not_independent_validation",
+  "permitted_claim": "Implementation-conformance construction only; no new result recorded.",
+  "blocked_until": ["Identify the exact ACS source package and submitted PDF; hash separately."],
+  "episode_membership": null
+}
