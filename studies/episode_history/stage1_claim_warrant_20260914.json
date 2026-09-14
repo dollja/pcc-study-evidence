@@ -1,0 +1,70 @@
+{
+  "activity_id": "STAGE1-CLAIM-WARRANT-20260914",
+  "manifest_schema_version": "1.0-proposed",
+  "date": "2026-09-14",
+  "evidence_baseline_sha": "d5968b784ea7b52d258501d032d2684b6501ddb2",
+  "evidence_role": "author_scope_decision_and_proposed_instruments_not_empirical_findings",
+  "decision_ids": [
+    "DEC-0025"
+  ],
+  "claim_ids": [
+    "CLM-0035",
+    "CLM-0036"
+  ],
+  "scope_status": "author_confirmed",
+  "instrument_status": "draft_pending_independent_review",
+  "artifact_version": "0.1.0",
+  "artifacts": [
+    {
+      "filename": "PCC_Stage1_Handbook_v0.1.0.pdf",
+      "sha256": "3da3f41d31396e395bbf56abdfee63499afe996500c746f09f6c958e2d90d91d",
+      "size_bytes": 125589,
+      "library_file_id": "libfile_0ca26505b15c8191ba5e559d29bc5781",
+      "library_path": "/Dissertation/PCC_Stage1_Handbook_v0.1.0.pdf",
+      "library_version": 0
+    },
+    {
+      "filename": "PCC_Stage1_Review_Package_v0.1.0.zip",
+      "sha256": "0f2943b86c4ffbd6abf9aa61113410358cb910a1fb63b5a4f57881ff462e8bb4",
+      "size_bytes": 151637,
+      "library_file_id": "libfile_14e564782fd88191bd887d65ebec0145",
+      "library_path": "/Dissertation/PCC_Stage1_Review_Package_v0.1.0.zip",
+      "library_version": 0
+    }
+  ],
+  "instrument_validation": {
+    "command": "python scripts/validate_instruments.py; python -m unittest discover -s tests -v",
+    "execution_location": "Extracted standalone Stage 1 review package; not prototype checkout",
+    "blank_templates_checked": 8,
+    "unit_tests_passed": 10,
+    "raw_outputs": "reports/instrument_validation.* and reports/instrument_unittest.* in the package",
+    "scope": "Selected structural and evidence-boundary checks only"
+  },
+  "teaching_material": {
+    "case_count": 12,
+    "authoring": "AI_authored_related_teaching_cases",
+    "independent_case_count": 0,
+    "eligible_for_pilot_or_main_evaluation": false
+  },
+  "independent_human_rating_count": 0,
+  "participant_observation_count": 0,
+  "rule_review": null,
+  "codebook_review": null,
+  "committee_approval": null,
+  "benchmark_frozen": false,
+  "automatic_state_core_aim_decision": null,
+  "human_diagnostic_study_scope_decision": null,
+  "independent_pilot_status_change": false,
+  "main_evaluation_status_change": false,
+  "PEV_status_changes": [],
+  "novelty_status_change": false,
+  "canonical_proposal_edited": false,
+  "active_workflow_replaced": false,
+  "evidence_validation_report": "studies/episode_history/reports/stage1_validation_20260914/metadata.json",
+  "limitations": [
+    "No independent annotation, participant evidence, or benchmark result was collected.",
+    "Detailed warrant and LPM criteria are proposed instruments, not approved replacements for the canonical LPM definition.",
+    "Instrument checks do not establish construct validity, detection accuracy, extraction, comparative advantage, novelty, or generalization.",
+    "The 30-episode development inventory and existing construction evidence retain their recorded status."
+  ]
+}

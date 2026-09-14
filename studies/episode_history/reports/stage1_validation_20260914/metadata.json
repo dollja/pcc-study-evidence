@@ -1,0 +1,68 @@
+{
+  "scope": "Evidence registration validation only; not prototype reproduction or independent scientific validation.",
+  "working_tree_base_sha": "d5968b784ea7b52d258501d032d2684b6501ddb2",
+  "branch": "stage1-claim-warrant-codebook-20260914",
+  "working_tree_includes_stage1_changes": true,
+  "python": "3.12.14",
+  "commands": [
+    {
+      "key": "render_system_status_1",
+      "command": [
+        "python",
+        "scripts/render_system_status.py"
+      ],
+      "started_at_utc": "2026-09-14T11:16:43.792133+00:00",
+      "finished_at_utc": "2026-09-14T11:16:43.820006+00:00",
+      "exit_code": 0
+    },
+    {
+      "key": "render_system_status_2",
+      "command": [
+        "python",
+        "scripts/render_system_status.py"
+      ],
+      "started_at_utc": "2026-09-14T11:16:43.820068+00:00",
+      "finished_at_utc": "2026-09-14T11:16:43.843781+00:00",
+      "exit_code": 0
+    },
+    {
+      "key": "validate_registers",
+      "command": [
+        "python",
+        "scripts/validate_registers.py"
+      ],
+      "started_at_utc": "2026-09-14T11:16:43.843836+00:00",
+      "finished_at_utc": "2026-09-14T11:16:43.876581+00:00",
+      "exit_code": 0
+    },
+    {
+      "key": "unittest",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "started_at_utc": "2026-09-14T11:16:43.876599+00:00",
+      "finished_at_utc": "2026-09-14T11:16:44.304125+00:00",
+      "exit_code": 0
+    },
+    {
+      "key": "diff_check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "started_at_utc": "2026-09-14T11:16:44.304145+00:00",
+      "finished_at_utc": "2026-09-14T11:16:44.307501+00:00",
+      "exit_code": 0
+    }
+  ],
+  "second_render_identical": true,
+  "test_count_observed": 44,
+  "test_count_note": "Count parsed from retained unittest stderr."
+}
