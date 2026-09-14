@@ -1,7 +1,8 @@
 # PCC Dissertation Master Specification
 
 Status: **canonical author-confirmed specification**  
-Effective date: **2026-07-24**
+Effective date: **2026-07-24**  
+Latest author-confirmed amendment: **2026-09-14**
 
 ## Title
 
@@ -19,6 +20,20 @@ Synthetic human-human-like workplace coordination.
 - Action sensitivity identifies which interpretations have materially different downstream consequences.
 - CSCW supplies the situated organizational, artifact, role, authorization, and workflow context.
 - Observability, abstention, and contestability govern diagnostic output.
+
+## 2026-09-14 observable-target amendment
+
+The **primary computational target** is an interpretation-dependent operational action that lacks the support required by the documented task rules at a specified observation time.
+
+The target is evidence-relative and time-indexed. The system must distinguish positive evidence of insufficient support from an incomplete record. Primary task-level labels therefore include `SUPPORTED`, `UNSUPPORTED`, `CANNOT_DETERMINE`, `NO_OPERATIONAL_EVENT`, and `OUT_OF_SCOPE`.
+
+**Latent pragmatic misalignment (LPM) remains a separate, stronger cognitive claim.** An unsupported operational action does not by itself establish LPM: the same operational failure may arise from missing authorization, incomplete documentation, stale context, or ordinary process error even when collaborators share the same interpretation.
+
+LPM is therefore annotated separately from the primary operational target. Evidence of actor-indexed interpretive divergence, apparent uptake/second-order assumptions, and repair status may be used to test the relationship between the two claims rather than to define them as equivalent.
+
+The cognitive motivation is preserved: bounded actor-indexed and second-order representations remain candidate explanatory/diagnostic mechanisms. Their incremental value must be tested empirically rather than assumed to be necessary for establishing the primary operational label.
+
+Detailed warrant and annotation rules are recorded in `docs/REVISION_GUIDANCE_STAGE1_TARGET_WARRANT_CODEBOOK.md`.
 
 ## Canonical authority order
 
