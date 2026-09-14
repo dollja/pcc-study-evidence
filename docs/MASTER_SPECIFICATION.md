@@ -43,3 +43,23 @@ Synthetic human-human-like workplace coordination.
 ## Scope boundary
 
 PCC diagnostic records represent bounded, evidence-backed hypotheses about apparent task interpretations and commitments. They do not claim direct access to private mental states, do not decide who is right, and do not authorize autonomous repair.
+
+## Author-confirmed core-target clarification, 2026-09-14
+
+DEC-0025 selects the primary evaluation target as **an interpretation-dependent
+operational action that lacks the support required by the documented task rules
+at a specified time**. The aim is to test whether PCC detects this bounded target;
+this is not a claim that independent detection accuracy has been demonstrated.
+
+Actual latent pragmatic misalignment remains a separate, stronger claim requiring
+additional evidence about differing task interpretations and participants'
+apparent awareness or uptake. CLM-0024's LPM definition and CLM-0025's interpretive
+drift definition remain intact. A missing required record is not by itself proof
+of a hidden divergence in interpretation.
+
+The cognitive motivation, detection-only boundary, and current title remain.
+The detailed Stage 1 warrant criteria and annotation instruments are proposed
+operationalizations pending independent review, not committee-approved methods.
+Automatic state construction, benchmark size and comparisons, and the human
+diagnostic study require their own scoped decisions. See CLM-0035/CLM-0036 and
+`studies/episode_history/stage1_claim_warrant_20260914.json` for the release record.
