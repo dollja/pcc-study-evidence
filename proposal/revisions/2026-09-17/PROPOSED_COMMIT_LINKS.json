@@ -1,0 +1,24 @@
+{
+  "claim_mapping_status": "proposed; existing SCM rows not promoted; conflicting draft IDs unresolved",
+  "date": "2026-09-17",
+  "evidence": {
+    "merge_commit": null,
+    "pull_request": 42,
+    "repository": "dollja/pcc-study-evidence",
+    "url": "https://github.com/dollja/pcc-study-evidence/pull/42"
+  },
+  "proposal": {
+    "base": "a73275c9675eccf303d588229371a7d198b4a2e3",
+    "commit": "94129831ca87a6684d4ee55dcb35e29c14bb5f31",
+    "merge_commit": null,
+    "pull_request": 10,
+    "repository": "dollja/pcc-proposal-latex",
+    "url": "https://github.com/dollja/pcc-proposal-latex/pull/10"
+  },
+  "prototype": {
+    "inspected_commit": "a2a844a74a9bf0fcb0b8ddb0f4d1e2e84026418b",
+    "modified": false,
+    "repository": "dollja/interpretive-drift-protoype"
+  },
+  "status": "proposed_unmerged"
+}

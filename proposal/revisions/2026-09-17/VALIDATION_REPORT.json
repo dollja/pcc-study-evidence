@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-17",
+  "build_command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build thesis.tex",
+  "build_success": true,
+  "pdf_pages": 40,
+  "active_citation_count": 26,
+  "paragraph_or_structured_anchors": 169,
+  "unresolved_citations": [],
+  "undefined_references": [],
+  "overfull_boxes": [],
+  "underfull_boxes": [],
+  "warnings": [
+    "caption: Unknown document class (or package), standard defaults will be used. Nonfatal legacy-class notice; captions visually checked."
+  ],
+  "out_of_page_text": [],
+  "rpi_class_unchanged": true,
+  "visual_review": "All-page contact sheets inspected; title, callouts, chapter breaks, numbered references, tables and final RQ page reviewed. Two sparse spill pages removed through concise prose without changing research conditions.",
+  "research_status_check": "Stage1 instruments remain draft; PEV-0016/0017 recorded_unverified; PEV-0018/0019 planned; NOV-0001 candidate.",
+  "historical_experiments_rerun": false,
+  "prototype_modified": false,
+  "repository_updates": "Draft proposal and documentation-only evidence updates prepared; final links recorded separately."
+}

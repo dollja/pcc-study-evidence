@@ -1,0 +1,44 @@
+{
+  "checked_date": "2026-09-17",
+  "evidence_main": "d5968b784ea7b52d258501d032d2684b6501ddb2",
+  "proposal_main": "a73275c9675eccf303d588229371a7d198b4a2e3",
+  "prototype_main": "a2a844a74a9bf0fcb0b8ddb0f4d1e2e84026418b",
+  "open_drafts": {
+    "ev39": {
+      "number": 39,
+      "head": "9f2fa2264247e524af156e3af2d5f2dddd4f92bd",
+      "state": "open",
+      "draft": true,
+      "merged": false
+    },
+    "ev40": {
+      "number": 40,
+      "head": "f78715031cdaa00ee26e768e7d8223fafab1fdd3",
+      "state": "open",
+      "draft": true,
+      "merged": false
+    },
+    "ev41": {
+      "number": 41,
+      "head": "c997a1212bb7523911d7ea5dc256b8e8d51ca0bc",
+      "state": "open",
+      "draft": true,
+      "merged": false
+    },
+    "pr8": {
+      "number": 8,
+      "head": "94c68bed550b98aa717ce35855a29f5959f32cb7",
+      "state": "open",
+      "draft": true,
+      "merged": false
+    },
+    "pt17": {
+      "number": 17,
+      "head": "4f550a323ac30da1c603fcc5264b98d08b157dc3",
+      "state": "open",
+      "draft": true,
+      "merged": false
+    }
+  },
+  "scope": "mapping and draft proposal integration; no prototype implementation or evidence-status promotion"
+}
